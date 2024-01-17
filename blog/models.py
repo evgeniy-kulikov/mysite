@@ -2,7 +2,19 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+
+# Менеджер, который извлекает все посты, имеющие статус PUBLISHED
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        # return super().get_queryset().filter(status=Post.Status.PUBLISHED)
+        return super().get_queryset()\
+                      .filter(status=Post.Status.PUBLISHED)
+
+
 class Post(models.Model):
+    objects = models.Manager()  # менеджер, применяемый по умолчанию
+    published = PublishedManager()  # Новый конкретно-прикладной менеджер
+
     class Status(models.TextChoices):
         DRAFT = 'DF', 'Черновик'
         PUBLISHED = 'PB', 'Публикация'
@@ -32,8 +44,3 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-
-class Person(models.Model):
-    name = models.CharField(max_length=50)
-    age = models.IntegerField(default=18)
-    address = models.TextField()
