@@ -1,0 +1,9 @@
+# created by virtualenv automatically
+#*
+/Lib
+/Scripts
+/.idea
+/db.sqlite3
+/pyvenv.cfg
+/.env
+/impotent.txt
