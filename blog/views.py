@@ -5,8 +5,8 @@ from .models import Post
 
 
 def post_list(request):
-    # posts = Post.published.all()
-    posts = Post.objects.all()
+    posts = Post.published.all()
+    # posts = Post.objects.all()
     context = {'posts': posts}
     return render(request,
                   'blog/post/list.html',
@@ -25,6 +25,7 @@ def post_detail(request, year, month, day, post):
                   {'post': post})
 
 # Через функцию сокращенного доступа get_object_or_404()
+# Получение данных через id
 # def post_detail(request, id):
 #     post = get_object_or_404(Post,
 #                              id=id, status=Post.Status.PUBLISHED)
@@ -34,6 +35,7 @@ def post_detail(request, year, month, day, post):
 
 
 # Другой вариант вывода детальной записи
+# Получение данных через id
 # def post_detail(request, id):
 #     try:
 #         post = Post.published.get(id=id)

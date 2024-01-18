@@ -6,9 +6,11 @@ app_name = 'blog'
 urlpatterns = [
     path('', views.post_list, name='post_list'),
 
-    # После применения в поле slug параметра unique_for_date="published" (модель Post)
+    # Получение адреса через параметры publish.year/publish.month/publish.day/slug
     path('<int:year>/<int:month>/<int:day>/<slug:post>/',
           views.post_detail,
           name='post_detail'),
+
+    # Получение данных через id
     # path('<int:id>/', views.post_detail, name='post_detail'),
 ]
