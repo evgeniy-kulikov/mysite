@@ -5,7 +5,8 @@ from .models import Post
 
 
 def post_list(request):
-    posts = Post.published.all()
+    # posts = Post.published.all()
+    posts = Post.objects.all()
     context = {'posts': posts}
     return render(request,
                   'blog/post/list.html',
