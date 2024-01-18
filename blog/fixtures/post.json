@@ -99,7 +99,7 @@
 },
 {
     "model": "blog.post",
-    "pk": 9,
+    "pk": 8,
     "fields": {
         "title": "Создание моделей данных блога",
         "slug": "sozdanie-modelej-dannyh-bloga",

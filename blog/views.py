@@ -1,12 +1,19 @@
 from django.shortcuts import render, get_object_or_404
 # from django.http import Http404
-
+from django.core.paginator import Paginator
 from .models import Post
 
 
 def post_list(request):
-    posts = Post.published.all()
+    posts_all = Post.published.all()
     # posts = Post.objects.all()
+
+    # экземпляр класса Paginator с числом объектов (3), возвращаемых в расчете на страницу
+    paginator = Paginator(posts_all, 3)
+    # загрузить первую (по умолчанию) страницу результатов.
+    page_number = request.GET.get('page', 1)
+    # передаем номер страницы и объект posts в шаблон
+    posts = paginator.page(page_number)
     context = {'posts': posts}
     return render(request,
                   'blog/post/list.html',
