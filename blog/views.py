@@ -3,15 +3,19 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView
 from .models import Post
+from .forms import EmailPostForm
+# работа с email
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 # Переопределние класса Paginator
-"""
-При превышении диапазона страниц - выдает последнюю
-При занижении (ноль и минус) диапазона страниц - выдает первую
-При нечисловом значении выдает ошибку 404
-"""
 class MyPaginator(Paginator):
+    """
+    При превышении диапазона страниц - выдает последнюю
+    При занижении (ноль и минус) диапазона страниц - выдает первую
+    При нечисловом значении выдает ошибку 404
+    """
     def validate_number(self, number):
         try:
             return super().validate_number(number)
@@ -47,33 +51,72 @@ class PostListView(ListView):
 
 
 """ FBV """
-def post_list(request):
-    posts_all = Post.published.all()
-    # posts = Post.objects.all()
-
-    # экземпляр класса Paginator с числом объектов (3), возвращаемых в расчете на страницу
-    paginator = Paginator(posts_all, 3)
-    # загрузить первую (по умолчанию) страницу результатов.
-    page_number = request.GET.get('page', 1)
-
-    try:
-        # передаем номер страницы и объект posts в шаблон
-        posts = paginator.page(page_number)
-    except PageNotAnInteger:
-        # Если page_number не целое число, то
-        # выдать первую страницу
-        posts = paginator.page(1)
-    except EmptyPage:  # Пустая страница
-        # Если page_number находится вне диапазона, то
-        # выдать последнюю страницу
-        posts = paginator.page(paginator.num_pages)
-
-    context = {'posts': posts}
-    return render(request,
-                  'blog/post/list.html',
-                  context=context)
 
 
+def post_share(request, post_id):
+    """
+    Рекомендация постов по электронной почте
+    """
+    # Извлечь пост по идентификатору id
+    post = get_object_or_404(Post,
+                             id=post_id,
+                             status=Post.Status.PUBLISHED)
+    sent = False
+    """
+    Если sent = False, то в шаблоне "../share.html" отражается форма отправки письма. 
+    Если письмо было успешно отправлено, то sent = True и возврвщаясь обратно на "../share.html"
+    форма отправки письма скрывается и показывается текст об успешной отправки.
+    """
+    if request.method == 'POST':
+        # Форма передается на обработку
+        form = EmailPostForm(request.POST)
+        if form.is_valid():
+            # Поля формы успешно прошли валидацию
+            cd = form.cleaned_data
+            # отправить электронное письмо
+            # build_absolute_uri() строит полный адрес включая доменное имя
+            post_url = request.build_absolute_uri(post.get_absolute_url())
+            subject = f"{cd['name']} Рекомендуем прочитать пост: {post.title}"
+            message = f"Прочтите \"{post.title}\" по ссылке {post_url}\n\n" \
+                      f"{cd['name']} ({cd['email']}) сообщает: {cd['comments']}"
+            send_mail(subject, message, settings.EMAIL_HOST_USER,
+                      [cd['to']])
+            sent = True
+    else:
+        form = EmailPostForm()
+    return render(request, 'blog/post/share.html', {'post': post,
+                                                    'form': form,
+                                                    'sent': sent})
+
+# Переделано на CBV
+# def post_list(request):
+#     posts_all = Post.published.all()
+#     # posts = Post.objects.all()
+#
+#     # экземпляр класса Paginator с числом объектов (3), возвращаемых в расчете на страницу
+#     paginator = Paginator(posts_all, 3)
+#     # загрузить первую (по умолчанию) страницу результатов.
+#     page_number = request.GET.get('page', 1)
+#
+#     try:
+#         # передаем номер страницы и объект posts в шаблон
+#         posts = paginator.page(page_number)
+#     except PageNotAnInteger:
+#         # Если page_number не целое число, то
+#         # выдать первую страницу
+#         posts = paginator.page(1)
+#     except EmptyPage:  # Пустая страница
+#         # Если page_number находится вне диапазона, то
+#         # выдать последнюю страницу
+#         posts = paginator.page(paginator.num_pages)
+#
+#     context = {'posts': posts}
+#     return render(request,
+#                   'blog/post/list.html',
+#                   context=context)
+
+
+# Получение данных через дату и слаг
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(Post,
                              status=Post.Status.PUBLISHED,

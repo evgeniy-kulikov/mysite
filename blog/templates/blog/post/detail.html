@@ -5,5 +5,10 @@
     <a href="{% url 'blog:post_list' %}">My Blog</a>
     </h1>
     <p>{{ post.title }}</p>
-    <p>{{ post.body }}</p>
+    <p>{{ post.body|linebreaks }}</p>
+    <p>
+        <a href="{% url 'blog:post_share' post.id %}">
+            Поделиться ссылкой на пост
+        </a>
+    </p>
 {% endblock %}
