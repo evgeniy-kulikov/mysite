@@ -16,6 +16,7 @@ class MyPaginator(Paginator):
     При занижении (ноль и минус) диапазона страниц - выдает первую
     При нечисловом значении выдает ошибку 404
     """
+
     def validate_number(self, number):
         try:
             return super().validate_number(number)
@@ -49,7 +50,6 @@ class PostListView(ListView):
 #     template_name = 'blog/post/list.html'
 
 
-
 """ FBV """
 
 
@@ -64,7 +64,7 @@ def post_share(request, post_id):
     sent = False
     """
     Если sent = False, то в шаблоне "../share.html" отражается форма отправки письма. 
-    Если письмо было успешно отправлено, то sent = True и возврвщаясь обратно на "../share.html"
+    Если письмо было успешно отправлено, то sent = True и возвращаясь обратно на "../share.html"
     форма отправки письма скрывается и показывается текст об успешной отправки.
     """
     if request.method == 'POST':
@@ -79,14 +79,14 @@ def post_share(request, post_id):
             subject = f"{cd['name']} Рекомендуем прочитать пост: {post.title}"
             message = f"Прочтите \"{post.title}\" по ссылке {post_url}\n\n" \
                       f"{cd['name']} ({cd['email']}) сообщает: {cd['comments']}"
-            send_mail(subject, message, settings.EMAIL_HOST_USER,
-                      [cd['to']])
+            send_mail(subject, message, settings.EMAIL_HOST_USER, [cd['to']])
             sent = True
     else:
         form = EmailPostForm()
     return render(request, 'blog/post/share.html', {'post': post,
                                                     'form': form,
                                                     'sent': sent})
+
 
 # Переделано на CBV
 # def post_list(request):
