@@ -1,6 +1,6 @@
 from django.contrib import admin
 from blog.models import Post, Comment
-
+# from taggit.models import TaggedItem
 
 # admin.site.register(Post)
 
@@ -23,3 +23,7 @@ class CommentAdmin(admin.ModelAdmin):
     search_fields = ['name', 'email', 'body']
     list_editable = ['active']
 
+
+# @admin.register(TaggedItem)
+# class TagAdmin(admin.ModelAdmin):
+#     readonly_fields = ['content_type']  # не сработало

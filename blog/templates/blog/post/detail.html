@@ -26,9 +26,9 @@
             <p class="info">
                 Комментарий {{ forloop.counter }} от {{ comment.name }}
                 &nbsp;&nbsp; {{ comment.created }}
-                &nbsp;&nbsp; ({{ comment.created|timesince }} &nbsp; назад)
-{# ошибка module 'django.utils.timezone' has no attribute 'utc'#}
-                {{ comment.when_published }}
+                &nbsp;&nbsp;(написано {{ comment.created|timesince }} &nbsp; назад)
+{# Вариант вывода давности поста через собственный метод модели when_published#}
+                - (written {{ comment.when_published }})
             </p>
             {{ comment.body|linebreaks }}
 

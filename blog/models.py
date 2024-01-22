@@ -1,8 +1,12 @@
 from django.db import models
-from datetime import datetime, timezone
+from datetime import datetime
+from datetime import timezone as tz
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+
+# django-taggit  # функциональность тегирования
+from taggit.managers import TaggableManager
 
 
 # Менеджер, который извлекает все посты, имеющие статус PUBLISHED
@@ -36,6 +40,8 @@ class Post(models.Model):
     status = models.CharField(max_length=2,
                               choices=Status.choices,
                               default=Status.DRAFT , verbose_name="Статус")
+
+    tags = TaggableManager()  # Менеджер tags позволит добавлять, извлекать и удалять теги из объектов Post
 
     class Meta:
         verbose_name = "Пост"
@@ -89,9 +95,9 @@ class Comment(models.Model):
     def when_published(self):
         """
         Информация о давности комментария
-        Этот метод может быит заменен фильтром |timesince
+        Этот метод может быть заменен фильтром |timesince
         """
-        now = datetime.now(timezone.utc)
+        now = datetime.now(tz.utc)
         diff = now - self.created
 
         # 0 day to 30 days

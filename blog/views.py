@@ -10,6 +10,8 @@ from django.conf import settings
 
 from django.views.decorators.http import require_POST
 
+# django-taggit  # функциональность тегирования
+from taggit.models import Tag
 
 # Переопределние класса Paginator
 class MyPaginator(Paginator):
@@ -18,7 +20,6 @@ class MyPaginator(Paginator):
     При занижении (ноль и минус) диапазона страниц - выдает первую
     При нечисловом значении выдает ошибку 404
     """
-
     def validate_number(self, number):
         try:
             return super().validate_number(number)
@@ -33,12 +34,34 @@ class MyPaginator(Paginator):
                 raise
 
 
+# Дополнена функциональность тегирования
 class PostListView(ListView):
-    queryset = Post.published.all()
     context_object_name = 'posts'
     paginate_by = 3
     template_name = 'blog/post/list.html'
-    paginator_class = MyPaginator
+    paginator_class = MyPaginator  # Измененная логика обработки неправильных номеров страниц
+
+    def get_queryset(self):
+        queryset = Post.published.all()
+        tag_slug = self.kwargs.get('tag_slug')
+        self.tag = None
+        if tag_slug:
+            self.tag = get_object_or_404(Tag, slug=tag_slug)
+            return queryset.filter(tags__in=[self.tag])
+        return queryset
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data()
+        context["tag"] = self.tag
+        return context
+
+
+# class PostListView(ListView):
+#     queryset = Post.published.all()
+#     context_object_name = 'posts'
+#     paginate_by = 3
+#     template_name = 'blog/post/list.html'
+#     paginator_class = MyPaginator  # Измененная логика обработки неправильных номеров страниц
 
 
 # При неверных номерах страницы выдает ошибку 404
