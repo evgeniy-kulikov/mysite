@@ -1,5 +1,7 @@
 {% extends "blog/base.html" %}
-{% block title %}Post Detail{% endblock %}
+{% load blog_extras %}
+
+{% block title %}Пост: {{ post.title|truncatechars:25 }} {% endblock %}
 {% block content %}
     <h1>
     <a href="{% url 'blog:post_list' %}">My Blog</a>
@@ -11,4 +13,35 @@
             Поделиться ссылкой на пост
         </a>
     </p>
+
+    {% with comments.count as total_comments %}
+        <h2>
+{#            {{ total_comments }} comment{{ total_comments|pluralize }}#}
+            {{ total_comments }} {{ total_comments|ru_plural:"комментарий,комментария,комментариев" }}
+        </h2>
+    {% endwith %}
+
+    {% for comment in comments %}
+        <div class="comment">
+            <p class="info">
+                Комментарий {{ forloop.counter }} от {{ comment.name }}
+                &nbsp;&nbsp; {{ comment.created }}
+                &nbsp;&nbsp; ({{ comment.created|timesince }} &nbsp; назад)
+{# ошибка module 'django.utils.timezone' has no attribute 'utc'#}
+                {{ comment.when_published }}
+            </p>
+            {{ comment.body|linebreaks }}
+
+        </div>
+    {% empty %}
+        <p>Комментариев еще нет.</p>
+    {% endfor %}
+    <br>
+    <form method="get">
+        <button name="desc">По убыванию</button>
+        <button name="asc">По возрастанию</button>
+    </form>
+
+    {% include "blog/post/includes/comment_form.html" %}
+
 {% endblock %}

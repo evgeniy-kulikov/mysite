@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime, timezone
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -73,8 +74,8 @@ class Comment(models.Model):
     name = models.CharField(max_length=80, verbose_name="Пользователь")
     email = models.EmailField()
     body = models.TextField(verbose_name="Сообщение")
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True,  verbose_name="Дата создания")
+    updated = models.DateTimeField(auto_now=True, verbose_name="Дата изменения")
     active = models.BooleanField(default=True, verbose_name="Видимость")
 
     class Meta:
@@ -84,6 +85,39 @@ class Comment(models.Model):
         indexes = [
             models.Index(fields=['created']),
         ]
+
+    def when_published(self):
+        """
+        Информация о давности комментария
+        Этот метод может быит заменен фильтром |timesince
+        """
+        now = datetime.now(timezone.utc)
+        diff = now - self.created
+
+        # 0 day to 30 days
+        if diff.days < 30:
+            days = diff.days
+            if days == 1:
+                return str(days) + " day ago"
+            else:
+                return str(days) + " days ago"
+
+        # 31 day to 365 days
+        if diff.days >= 30 and diff.days < 365:
+            months = diff.days // 30
+            if months == 1:
+                return str(months) + " month ago"
+            else:
+                return str(months) + " months ago"
+
+        # 365+
+        if diff.days >= 365:
+            years = diff.days // 365
+            if years == 1:
+                return str(years) + " year ago"
+            else:
+                return str(years) + " years ago"
+
 
     def __str__(self):
         return f'Comment by {self.name} on {self.post}'

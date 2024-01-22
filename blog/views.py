@@ -3,10 +3,12 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView
 from .models import Post
-from .forms import EmailPostForm
+from .forms import EmailPostForm, CommentForm
 # работа с email
 from django.core.mail import send_mail
 from django.conf import settings
+
+from django.views.decorators.http import require_POST
 
 
 # Переопределние класса Paginator
@@ -88,7 +90,102 @@ def post_share(request, post_id):
                                                     'sent': sent})
 
 
-# Переделано на CBV
+@require_POST  # представление принимает только метод POST
+def post_comment(request, post_id):
+    """
+    Комментирование постов
+    """
+    post = get_object_or_404(Post,
+                             id=post_id,
+                             status=Post.Status.PUBLISHED)
+
+    # для хранения комментарного объекта при его создании
+    comment = None
+
+    # Комментарий был отправлен
+    form = CommentForm(data=request.POST)
+
+    if form.is_valid():
+        # Создать объект класса Comment, не сохраняя его в базе данных (commit=False)
+        comment = form.save(commit=False)
+
+        # Назначить пост комментарию
+        comment.post = post
+
+        # Сохранить комментарий в базе данных
+        comment.save()
+    return render(request, 'blog/post/comment.html',
+                  {'post': post,
+                   'form': form,
+                   'comment': comment})
+
+
+def post_detail(request, year, month, day, post):
+    post = get_object_or_404(Post,
+                             status=Post.Status.PUBLISHED,
+                             slug=post,
+                             publish__year=year,
+                             publish__month=month,
+                             publish__day=day)
+
+    # Список активных комментариев к этому посту
+    # comment_order - сортировка комментариев по возрастанию / убыванию по дате публикации
+    comment_order = 'created'
+    if 'desc' in request.GET:  # кнопка <button name="desc">По убыванию</button> на 'blog/post/detail.html'
+        comment_order = '-created'
+    elif 'asc' in request.GET:
+        comment_order = 'created'
+
+    # comments это  related_name='comments'  поля "post" таблицы "Comment"
+    comments_list = post.comments.filter(active=True).order_by(comment_order)
+
+    # Форма для комментирования пользователями
+    form = CommentForm()
+    return render(request,
+                  'blog/post/detail.html',
+                  {'post': post,
+                   'comments': comments_list,
+                   'form': form})
+
+
+
+# Получение данных через дату и слаг
+# def post_detail(request, year, month, day, post):
+#     post = get_object_or_404(Post,
+#                              status=Post.Status.PUBLISHED,
+#                              slug=post,
+#                              publish__year=year,
+#                              publish__month=month,
+#                              publish__day=day)
+#     return render(request,
+#                   'blog/post/detail.html',
+#                   {'post': post})
+
+# Через функцию сокращенного доступа get_object_or_404()
+# Получение данных через id
+# def post_detail(request, id):
+#     post = get_object_or_404(Post,
+#                              id=id, status=Post.Status.PUBLISHED)
+#     return render(request,
+#                   'blog/post/detail.html',
+#                   {'post': post})
+
+
+# Другой вариант вывода детальной записи
+# Получение данных через id
+# def post_detail(request, id):
+#     try:
+#         post = Post.published.get(id=id)
+#
+#     except Post.DoesNotExist:
+#         raise Http404("No Post found.")
+#
+#     return render(request,
+#                   'blog/post/detail.html',
+#                   {'post': post})
+
+
+"""  * * *   Переделано на CBV   *  *  *   """
 # def post_list(request):
 #     posts_all = Post.published.all()
 #     # posts = Post.objects.all()
@@ -114,39 +211,3 @@ def post_share(request, post_id):
 #     return render(request,
 #                   'blog/post/list.html',
 #                   context=context)
-
-
-# Получение данных через дату и слаг
-def post_detail(request, year, month, day, post):
-    post = get_object_or_404(Post,
-                             status=Post.Status.PUBLISHED,
-                             slug=post,
-                             publish__year=year,
-                             publish__month=month,
-                             publish__day=day)
-    return render(request,
-                  'blog/post/detail.html',
-                  {'post': post})
-
-# Через функцию сокращенного доступа get_object_or_404()
-# Получение данных через id
-# def post_detail(request, id):
-#     post = get_object_or_404(Post,
-#                              id=id, status=Post.Status.PUBLISHED)
-#     return render(request,
-#                   'blog/post/detail.html',
-#                   {'post': post})
-
-
-# Другой вариант вывода детальной записи
-# Получение данных через id
-# def post_detail(request, id):
-#     try:
-#         post = Post.published.get(id=id)
-#
-#     except Post.DoesNotExist:
-#         raise Http404("No Post found.")
-#
-#     return render(request,
-#                   'blog/post/detail.html',
-#                   {'post': post})
