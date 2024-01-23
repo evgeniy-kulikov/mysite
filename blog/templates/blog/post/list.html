@@ -32,8 +32,8 @@
 
     {#    В случае CBV #}
 {#    Типовое представление ListView передает запрошенную страницу в переменную с именем page_obj #}
-    {% include "blog/pagination.html" with page=page_obj  %}
+{#    {% include "blog/pagination.html" with page=page_obj  %}#}
 
     {#    В случае FBV #}
-{#    {% include "blog/pagination.html" with page=posts %}#}
+    {% include "blog/pagination.html" with page=posts %}
 {% endblock %}

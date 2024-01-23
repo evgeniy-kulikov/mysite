@@ -8,6 +8,7 @@ from .forms import EmailPostForm, CommentForm
 from django.core.mail import send_mail
 from django.conf import settings
 
+from django.db.models import Count
 from django.views.decorators.http import require_POST
 
 # django-taggit  # функциональность тегирования
@@ -166,11 +167,32 @@ def post_detail(request, year, month, day, post):
 
     # Форма для комментирования пользователями
     form = CommentForm()
+
+    # Список схожих постов
+    """
+    Получаем список идентификаторов тегов текущего поста.
+    Набор запросов QuerySet values_list() возвращает кортежи со значениями заданных полей. 
+    Ему передается параметр flat=True, чтобы получить одиночные значения, такие как [1, 2, 3, ...], 
+    а не одноэлементые кортежи, такие как [(1,), (2,), (3,), ...]
+    """
+    post_tags_ids = post.tags.values_list('id', flat=True)
+
+    # Получаем все посты, содержащие любой из этих тегов, за исключением текущего поста
+    similar_posts = Post.published.filter(tags__in=post_tags_ids) \
+        .exclude(id=post.id)
+
+    # Создаем в запросе вычисляемое поле – same_tags,
+    # которое содержит число тегов, общих со всеми запрошенными тегами.
+    # Результат нарезается (первые четыре поста)
+    similar_posts = similar_posts.annotate(same_tags=Count('tags')) \
+                        .order_by('-same_tags', '-publish')[:4]
+
     return render(request,
                   'blog/post/detail.html',
                   {'post': post,
                    'comments': comments_list,
-                   'form': form})
+                   'form': form,
+                   'similar_posts': similar_posts})
 
 
 
@@ -214,34 +236,34 @@ def post_detail(request, year, month, day, post):
 
 """  * * *   Переделано на CBV   *  *  *   """
 
-# def post_list(request, tag_slug=None):
-#     """
-#     Добавлена функциональность тегирования (django-taggit)
-#     """
-#     post_list = Post.published.all()
-#
-#     tag = None
-#     if tag_slug:
-#         tag = get_object_or_404(Tag, slug=tag_slug)
-#         post_list = post_list.filter(tags__in=[tag])
-#
-#     # Постраничная разбивка с 3 постами на страницу
-#     paginator = Paginator(post_list, 3)
-#     page_number = request.GET.get('page', 1)
-#     try:
-#         posts = paginator.page(page_number)
-#     except PageNotAnInteger:
-#         # Если page_number не целое число, то
-#         # выдать первую страницу
-#         posts = paginator.page(1)
-#     except EmptyPage:
-#         # Если page_number находится вне диапазона, то
-#         # выдать последнюю страницу результатов
-#         posts = paginator.page(paginator.num_pages)
-#     return render(request,
-#                   'blog/post/list.html',
-#                   {'posts': posts,
-#                    'tag': tag})
+def post_list(request, tag_slug=None):
+    """
+    Добавлена функциональность тегирования (django-taggit)
+    """
+    post_list = Post.published.all()
+
+    tag = None
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        post_list = post_list.filter(tags__in=[tag])
+
+    # Постраничная разбивка с 3 постами на страницу
+    paginator = Paginator(post_list, 3)
+    page_number = request.GET.get('page', 1)
+    try:
+        posts = paginator.page(page_number)
+    except PageNotAnInteger:
+        # Если page_number не целое число, то
+        # выдать первую страницу
+        posts = paginator.page(1)
+    except EmptyPage:
+        # Если page_number находится вне диапазона, то
+        # выдать последнюю страницу результатов
+        posts = paginator.page(paginator.num_pages)
+    return render(request,
+                  'blog/post/list.html',
+                  {'posts': posts,
+                   'tag': tag})
 
 
 # def post_list(request):

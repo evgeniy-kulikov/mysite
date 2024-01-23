@@ -4,7 +4,7 @@
 {% block title %}Пост: {{ post.title|truncatechars:25 }} {% endblock %}
 {% block content %}
     <h1>
-    <a href="{% url 'blog:post_list' %}">Мой блог</a>
+        <a href="{% url 'blog:post_list' %}">Мой блог</a>
     </h1>
     <p>{{ post.title }}</p>
     <p>{{ post.body|linebreaks }}</p>
@@ -13,6 +13,17 @@
             Поделиться ссылкой на пост
         </a>
     </p>
+
+{#    Список схожих постов #}
+    <h2>Похожие посты:</h2>
+    {% for post in similar_posts %}
+        <p>
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </p>
+    {% empty %}
+        There are no similar posts yet.
+    {% endfor %}
+
 
     {% with comments.count as total_comments %}
         <h2>
