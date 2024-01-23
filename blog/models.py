@@ -41,6 +41,7 @@ class Post(models.Model):
                               choices=Status.choices,
                               default=Status.DRAFT , verbose_name="Статус")
 
+    # https://django-taggit.readthedocs.io/en/latest/getting_started.html#settings
     tags = TaggableManager()  # Менеджер tags позволит добавлять, извлекать и удалять теги из объектов Post
 
     class Meta:

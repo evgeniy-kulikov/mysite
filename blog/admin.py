@@ -24,6 +24,3 @@ class CommentAdmin(admin.ModelAdmin):
     list_editable = ['active']
 
 
-# @admin.register(TaggedItem)
-# class TagAdmin(admin.ModelAdmin):
-#     readonly_fields = ['content_type']  # не сработало

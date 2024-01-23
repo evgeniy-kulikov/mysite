@@ -149,6 +149,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Регистр тегов при поиске не учитывается
+# https://django-taggit.readthedocs.io/en/latest/getting_started.html#settings
+# TAGGIT_CASE_INSENSITIVE = True
+
 
 # отправка почты в консоль
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

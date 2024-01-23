@@ -40,17 +40,19 @@ class PostListView(ListView):
     paginate_by = 3
     template_name = 'blog/post/list.html'
     paginator_class = MyPaginator  # Измененная логика обработки неправильных номеров страниц
+    tag = None
 
     def get_queryset(self):
         queryset = Post.published.all()
         tag_slug = self.kwargs.get('tag_slug')
-        self.tag = None
+        # self.tag = None   # можно указать в атрибуте класса
         if tag_slug:
             self.tag = get_object_or_404(Tag, slug=tag_slug)
             return queryset.filter(tags__in=[self.tag])
         return queryset
 
-    def get_context_data(self, *, object_list=None, **kwargs):
+    def get_context_data(self, **kwargs):
+    # def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data()
         context["tag"] = self.tag
         return context
@@ -208,7 +210,40 @@ def post_detail(request, year, month, day, post):
 #                   {'post': post})
 
 
+
+
 """  * * *   Переделано на CBV   *  *  *   """
+
+# def post_list(request, tag_slug=None):
+#     """
+#     Добавлена функциональность тегирования (django-taggit)
+#     """
+#     post_list = Post.published.all()
+#
+#     tag = None
+#     if tag_slug:
+#         tag = get_object_or_404(Tag, slug=tag_slug)
+#         post_list = post_list.filter(tags__in=[tag])
+#
+#     # Постраничная разбивка с 3 постами на страницу
+#     paginator = Paginator(post_list, 3)
+#     page_number = request.GET.get('page', 1)
+#     try:
+#         posts = paginator.page(page_number)
+#     except PageNotAnInteger:
+#         # Если page_number не целое число, то
+#         # выдать первую страницу
+#         posts = paginator.page(1)
+#     except EmptyPage:
+#         # Если page_number находится вне диапазона, то
+#         # выдать последнюю страницу результатов
+#         posts = paginator.page(paginator.num_pages)
+#     return render(request,
+#                   'blog/post/list.html',
+#                   {'posts': posts,
+#                    'tag': tag})
+
+
 # def post_list(request):
 #     posts_all = Post.published.all()
 #     # posts = Post.objects.all()

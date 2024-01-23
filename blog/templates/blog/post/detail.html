@@ -4,7 +4,7 @@
 {% block title %}Пост: {{ post.title|truncatechars:25 }} {% endblock %}
 {% block content %}
     <h1>
-    <a href="{% url 'blog:post_list' %}">My Blog</a>
+    <a href="{% url 'blog:post_list' %}">Мой блог</a>
     </h1>
     <p>{{ post.title }}</p>
     <p>{{ post.body|linebreaks }}</p>
