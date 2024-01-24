@@ -47,6 +47,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Добавление карты сайта
+SITE_ID = 1
 
 # Application definition
 
@@ -57,6 +59,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Добавление карты сайта
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 
     'taggit',
     'django_extensions',

@@ -17,8 +17,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# Добавление карты сайта
+# https://docs.djangoproject.com/en/4.2/ref/contrib/sitemaps/
+from django.contrib.sitemaps.views import sitemap
+from blog.sitemaps import PostSitemap
+sitemaps = {'posts': PostSitemap,}
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('blog/', include('blog.urls', namespace='blog')),
-    path('', include('blog.urls', namespace='blog')),
+    path('', include('blog.urls', namespace='blog')),  # путь blog/ временно убран для удобства
+
+    # Добавление карты сайта  http://127.0.0.1:8000/sitemap.xml
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps},
+    name="django.contrib.sitemaps.views.sitemap",),
 ]
+# http://localhost:8000/2024/1/24/getting-the-gist-of-markdowns-formatting-syntax/
