@@ -22,4 +22,4 @@ def ru_plural(value, variants):
     return variants[variant]
 
 # https://tretyakov.net/post/sklonenie-slov-vo-mnozhestvennom-chisle-v-shablonah-django/
-# |ru_plural:"подписчик,подписчика,подписчиков"
+# |ru_plural:"подписчик, подписчика, подписчиков"

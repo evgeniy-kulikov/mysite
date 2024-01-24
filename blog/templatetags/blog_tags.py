@@ -1,6 +1,9 @@
 from django import template
-from ..models import Post
+from blog.models import Post
 from django.db.models import Count
+
+from django.utils.safestring import mark_safe
+import markdown
 
 """
 Для того чтобы быть допустимой библиотекой тегов, 
@@ -37,3 +40,10 @@ def get_most_commented_posts(count=5):
     return Post.published.annotate( total_comments=Count('comments')) \
                .order_by('-total_comments')[:count]
 
+
+# Поддержка синтаксиса Markdown
+# Для избежания конфликта имен функции имя nmarkdown_format
+# Для удобства вызова, даем фильтру имя name='markdown_tag'
+@register.filter(name='markdown_tag')
+def markdown_format(text):
+    return mark_safe(markdown.markdown(text))

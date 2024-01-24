@@ -1,5 +1,6 @@
 {% extends "blog/base.html" %}
 {% load blog_extras %}
+{% load blog_tags %}
 
 {% block title %}Пост: {{ post.title|truncatechars:25 }} {% endblock %}
 {% block content %}
@@ -7,7 +8,7 @@
         <a href="{% url 'blog:post_list' %}">Мой блог</a>
     </h1>
     <p>{{ post.title }}</p>
-    <p>{{ post.body|linebreaks }}</p>
+    <p>{{ post.body|markdown_tag }}</p>
     <p>
         <a href="{% url 'blog:post_share' post.id %}">
             Поделиться ссылкой на пост
@@ -28,7 +29,7 @@
     {% with comments.count as total_comments %}
         <h2>
 {#            {{ total_comments }} comment{{ total_comments|pluralize }}#}
-            {{ total_comments }} {{ total_comments|ru_plural:"комментарий,комментария,комментариев" }}
+            {{ total_comments }} {{ total_comments|ru_plural:"комментарий, комментария, комментариев" }}
         </h2>
     {% endwith %}
 
