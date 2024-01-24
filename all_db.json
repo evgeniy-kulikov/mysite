@@ -1,0 +1,1298 @@
+[
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2024-01-18T11:46:28.974Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "8",
+        "object_repr": "sq",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2024-01-18T11:46:56.003Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "8",
+        "object_repr": "sq",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2024-01-18T11:47:35.020Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "9",
+        "object_repr": "Создание моделей данных блога",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2024-01-18T11:47:43.739Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "9",
+        "object_repr": "Создание моделей данных блога",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2024-01-18T11:50:55.983Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "3",
+        "object_repr": "Создание шаблонов представлений",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"URL slug\", \"\\u0421\\u043e\\u0434\\u0435\\u0440\\u0436\\u0438\\u043c\\u043e\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2024-01-18T11:52:00.828Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "6",
+        "object_repr": "Добавление постраничной разбивки",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"URL slug\", \"\\u0421\\u043e\\u0434\\u0435\\u0440\\u0436\\u0438\\u043c\\u043e\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2024-01-18T11:52:56.142Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "7",
+        "object_repr": "Использование канонических URL-адресов для моделей",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"URL slug\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2024-01-18T13:49:22.791Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "10",
+        "object_repr": "sfsf",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2024-01-18T13:49:34.951Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "10",
+        "object_repr": "sfsf",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2024-01-18T13:56:49.560Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "11",
+        "object_repr": "we",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2024-01-18T13:56:57.052Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "11",
+        "object_repr": "we",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2024-01-21T15:25:01.098Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "Comment by Гость on Как он появился?",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2024-01-21T15:25:30.653Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "Comment by Гость on Использование канонических URL-адресов для моделей",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Post\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2024-01-22T08:32:50.664Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "4",
+        "object_repr": "Comment by Tom on Веб-фреймворк Django (Python)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0412\\u0438\\u0434\\u0438\\u043c\\u043e\\u0441\\u0442\\u044c\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2024-01-22T08:32:50.666Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "5",
+        "object_repr": "Comment by Mike on Веб-фреймворк Django (Python)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0412\\u0438\\u0434\\u0438\\u043c\\u043e\\u0441\\u0442\\u044c\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2024-01-22T08:33:02.571Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "4",
+        "object_repr": "Comment by Tom on Веб-фреймворк Django (Python)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0412\\u0438\\u0434\\u0438\\u043c\\u043e\\u0441\\u0442\\u044c\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2024-01-22T08:33:02.574Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "5",
+        "object_repr": "Comment by Mike on Веб-фреймворк Django (Python)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0412\\u0438\\u0434\\u0438\\u043c\\u043e\\u0441\\u0442\\u044c\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2024-01-22T13:37:55.691Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "3",
+        "object_repr": "jazz",
+        "action_flag": 2,
+        "change_message": "[{\"added\": {\"name\": \"tagged item\", \"object\": \"\\u0421\\u043e\\u0437\\u0434\\u0430\\u043d\\u0438\\u0435 \\u0441\\u0430\\u0439\\u0442\\u0430 \\u0430\\u0434\\u043c\\u0438\\u043d\\u0438\\u0441\\u0442\\u0440\\u0438\\u0440\\u043e\\u0432\\u0430\\u043d\\u0438\\u044f \\u0434\\u043b\\u044f \\u043c\\u043e\\u0434\\u0435\\u043b\\u0435\\u0439 tagged with jazz\"}}, {\"added\": {\"name\": \"tagged item\", \"object\": \"\\u0421\\u043e\\u0437\\u0434\\u0430\\u043d\\u0438\\u0435 \\u0448\\u0430\\u0431\\u043b\\u043e\\u043d\\u043e\\u0432 \\u043f\\u0440\\u0435\\u0434\\u0441\\u0442\\u0430\\u0432\\u043b\\u0435\\u043d\\u0438\\u0439 tagged with jazz\"}}, {\"changed\": {\"name\": \"tagged item\", \"object\": \"Test tagged with jazz\", \"fields\": [\"Object ID\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2024-01-22T17:16:33.364Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "6",
+        "object_repr": "Добавление постраничной разбивки",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Tags\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2024-01-22T17:16:39.589Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "7",
+        "object_repr": "Использование канонических URL-адресов для моделей",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Tags\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2024-01-22T17:16:46.064Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "4",
+        "object_repr": "Веб-фреймворк Django (Python)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Tags\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2024-01-22T17:16:56.463Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "8",
+        "object_repr": "Создание моделей данных блога",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Tags\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2024-01-22T17:17:17.681Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "8",
+        "object_repr": "Создание моделей данных блога",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Tags\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2024-01-22T17:17:28.720Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "3",
+        "object_repr": "Создание шаблонов представлений",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Tags\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2024-01-22T17:17:41.848Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "5",
+        "object_repr": "Как он появился?",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Tags\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2024-01-22T17:17:51.371Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "7",
+        "object_repr": "Использование канонических URL-адресов для моделей",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Tags\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2024-01-22T17:17:59.639Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "6",
+        "object_repr": "Добавление постраничной разбивки",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2024-01-23T06:52:10.123Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "8",
+        "object_repr": "Создание моделей данных блога",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Tags\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2024-01-24T06:45:24.242Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "9",
+        "object_repr": "GETTING THE GIST OF MARKDOWN’S FORMATTING SYNTAX",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2024-01-24T07:17:19.913Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "1",
+        "object_repr": "localhost:8000",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Domain name\", \"Display name\"]}}]"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 1,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 1,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 1,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": 1,
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 2,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 2,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 2,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can view permission",
+        "content_type": 2,
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 3,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 3,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 3,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can view group",
+        "content_type": 3,
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add user",
+        "content_type": 4,
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change user",
+        "content_type": 4,
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": 4,
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can view user",
+        "content_type": 4,
+        "codename": "view_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 5,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 5,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 5,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can view content type",
+        "content_type": 5,
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 6,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 6,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 6,
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can view session",
+        "content_type": 6,
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add Пост",
+        "content_type": 7,
+        "codename": "add_post"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change Пост",
+        "content_type": 7,
+        "codename": "change_post"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete Пост",
+        "content_type": 7,
+        "codename": "delete_post"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can view Пост",
+        "content_type": 7,
+        "codename": "view_post"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can add Комментарий",
+        "content_type": 8,
+        "codename": "add_comment"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can change Комментарий",
+        "content_type": 8,
+        "codename": "change_comment"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can delete Комментарий",
+        "content_type": 8,
+        "codename": "delete_comment"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can view Комментарий",
+        "content_type": 8,
+        "codename": "view_comment"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+        "name": "Can add tag",
+        "content_type": 9,
+        "codename": "add_tag"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+        "name": "Can change tag",
+        "content_type": 9,
+        "codename": "change_tag"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+        "name": "Can delete tag",
+        "content_type": 9,
+        "codename": "delete_tag"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+        "name": "Can view tag",
+        "content_type": 9,
+        "codename": "view_tag"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+        "name": "Can add tagged item",
+        "content_type": 10,
+        "codename": "add_taggeditem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+        "name": "Can change tagged item",
+        "content_type": 10,
+        "codename": "change_taggeditem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+        "name": "Can delete tagged item",
+        "content_type": 10,
+        "codename": "delete_taggeditem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+        "name": "Can view tagged item",
+        "content_type": 10,
+        "codename": "view_taggeditem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+        "name": "Can add site",
+        "content_type": 11,
+        "codename": "add_site"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+        "name": "Can change site",
+        "content_type": 11,
+        "codename": "change_site"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+        "name": "Can delete site",
+        "content_type": 11,
+        "codename": "delete_site"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+        "name": "Can view site",
+        "content_type": 11,
+        "codename": "view_site"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$720000$cwRvCQw37cQoVZmJKjm1Pg$YHV+gcFvTjDTtFGSeyccXry8PxdI5a3zhyAIPjLxZ0E=",
+        "last_login": "2024-01-18T11:09:16.386Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-01-17T14:30:34.675Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "blog",
+        "model": "post"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "blog",
+        "model": "comment"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+        "app_label": "taggit",
+        "model": "tag"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "taggit",
+        "model": "taggeditem"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+        "app_label": "sites",
+        "model": "site"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "e1xajsyi96hxr371ype97zwqxf8fzznt",
+    "fields": {
+        "session_data": ".eJxVjLsOwjAMAP8lM4oax32Ekb3fUNmxQwoolfqYEP-OInWA9e50bzPRsefp2HSdZjFX48zllzHFp5Yq5EHlvti4lH2d2dbEnnaz4yL6up3t3yDTluuWCZgxBWpVCAkb9N5DpwA-gg5u4IYDC6deO0EKkFok56QPCBLBfL73ZjhF:1rQQGq:5epakBokfNrBMGvpoKA4qG19tlzC7wCbYL8R7ia_GqI",
+        "expire_date": "2024-02-01T11:09:16.509Z"
+    }
+},
+{
+    "model": "sites.site",
+    "pk": 1,
+    "fields": {
+        "domain": "localhost:8000",
+        "name": "localhost:8000"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1,
+    "fields": {
+        "name": "rock",
+        "slug": "rock"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 2,
+    "fields": {
+        "name": "music",
+        "slug": "music"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 3,
+    "fields": {
+        "name": "jazz",
+        "slug": "jazz"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 4,
+    "fields": {
+        "name": "blues",
+        "slug": "blues"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 5,
+    "fields": {
+        "name": "markdown",
+        "slug": "markdown"
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 1,
+    "fields": {
+        "tag": 1,
+        "content_type": 7,
+        "object_id": 2
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 2,
+    "fields": {
+        "tag": 2,
+        "content_type": 7,
+        "object_id": 2
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 3,
+    "fields": {
+        "tag": 3,
+        "content_type": 7,
+        "object_id": 1
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 4,
+    "fields": {
+        "tag": 3,
+        "content_type": 7,
+        "object_id": 2
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 5,
+    "fields": {
+        "tag": 3,
+        "content_type": 7,
+        "object_id": 3
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 6,
+    "fields": {
+        "tag": 1,
+        "content_type": 7,
+        "object_id": 6
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 7,
+    "fields": {
+        "tag": 1,
+        "content_type": 7,
+        "object_id": 7
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 8,
+    "fields": {
+        "tag": 1,
+        "content_type": 7,
+        "object_id": 4
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 9,
+    "fields": {
+        "tag": 1,
+        "content_type": 7,
+        "object_id": 8
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 10,
+    "fields": {
+        "tag": 2,
+        "content_type": 7,
+        "object_id": 8
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 11,
+    "fields": {
+        "tag": 2,
+        "content_type": 7,
+        "object_id": 3
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 12,
+    "fields": {
+        "tag": 2,
+        "content_type": 7,
+        "object_id": 5
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 13,
+    "fields": {
+        "tag": 3,
+        "content_type": 7,
+        "object_id": 5
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 14,
+    "fields": {
+        "tag": 3,
+        "content_type": 7,
+        "object_id": 7
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 15,
+    "fields": {
+        "tag": 4,
+        "content_type": 7,
+        "object_id": 8
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 16,
+    "fields": {
+        "tag": 5,
+        "content_type": 7,
+        "object_id": 9
+    }
+},
+{
+    "model": "blog.post",
+    "pk": 1,
+    "fields": {
+        "title": "Test",
+        "slug": "testurl",
+        "body": "Your password can’t be too similar to your other personal information.\r\nYour password must contain at least 8 characters.\r\nYour password can’t be a commonly used password.\r\nYour password can’t be entirely numeric.",
+        "author": 1,
+        "publish": "2024-01-17T14:31:01Z",
+        "created": "2024-01-17T14:32:19.953Z",
+        "updated": "2024-01-17T14:32:19.953Z",
+        "status": "DF"
+    }
+},
+{
+    "model": "blog.post",
+    "pk": 2,
+    "fields": {
+        "title": "Создание сайта администрирования для моделей",
+        "slug": "admin-site-model",
+        "body": "Теперь, когда модель Post синхронизирована с базой данных, можно создать простой сайт администрирования, чтобы управлять постами блога.",
+        "author": 1,
+        "publish": "2024-01-16T14:31:01Z",
+        "created": "2024-01-16T14:31:01Z",
+        "updated": "2024-01-16T14:31:01Z",
+        "status": "PB"
+    }
+},
+{
+    "model": "blog.post",
+    "pk": 3,
+    "fields": {
+        "title": "Создание шаблонов представлений",
+        "slug": "sozdanie-shablonov-predstavlenij",
+        "body": "Теперь, когда вы понимаете, как использовать ORM-преобразователь, вы готовы к разработке представлений приложения blog.\r\n\r\nПредставление Django – это просто функция Python, которая получает веб-запрос и возвращает веб-ответ. Вся логика желаемого ответа находится внутри функции-представления.\r\n\r\nСначала в своем приложении нужно создать функции-представления, затем по каждому представлению сформировать шаблон URL-адреса и, наконец, создать шаблоны HTML, чтобы прорисовывать сгенерированные представлениями данные.\r\n\r\nКаждое представление будет прорисовывать шаблон, передавая ему переменные, и возвращать HTTP-ответ с прорисованным результатом.",
+        "author": 1,
+        "publish": "2024-01-14T14:31:01Z",
+        "created": "2024-01-14T14:31:01Z",
+        "updated": "2024-01-22T17:17:28.715Z",
+        "status": "PB"
+    }
+},
+{
+    "model": "blog.post",
+    "pk": 4,
+    "fields": {
+        "title": "Веб-фреймворк Django (Python)",
+        "slug": "veb-frejmvork-django-python",
+        "body": "Django является чрезвычайно популярным и полнофункциональным серверным веб-фреймворком, написанным на Python. Данный модуль расскажет о том, почему Django один из самых популярных серверных веб-фреймворков, как установить среду разработки, и как начать использовать его для создания собственных веб-приложений.\r\nPython является одним из самых доступных в чтении и понимании для новичков языком программирования. Тем не менее, если вы захотите глубже понять этот модуль, в Интернете сейчас доступны многочисленные бесплатные книги и учебные пособия.",
+        "author": 1,
+        "publish": "2024-01-10T07:42:31Z",
+        "created": "2024-01-18T07:44:15.420Z",
+        "updated": "2024-01-22T17:16:45.538Z",
+        "status": "PB"
+    }
+},
+{
+    "model": "blog.post",
+    "pk": 5,
+    "fields": {
+        "title": "Как он появился?",
+        "slug": "kak-on-poyavilsya",
+        "body": "Django был разработан в период с 2003 по 2005 год командой, которая занималась созданием и обслуживанием газетных веб-сайтов. После создания нескольких сайтов, команда начала повторно использовать множество общего кода и шаблонов проектирования. Этот общий код эволюционировал в веб-фреймворк, который превратился в проект \"Django\" с открытым исходным кодом в июле 2005 года.\r\n\r\nDjango продолжает расти и улучшаться с момента его первого релиза (1.0) в сентябре 2008 года до недавно выпущенной версии 5.0 (2023). В каждой версии добавлены новые функциональные возможности и исправлены ошибки, начиная от поддержки новых типов баз данных, шаблонизаторов и кеширования, до добавления «общих» функций просмотра и классов (уменьшающих объём кода, который разработчики должны писать для ряда программных задач).",
+        "author": 1,
+        "publish": "2024-01-15T13:45:21Z",
+        "created": "2024-01-18T07:46:20.572Z",
+        "updated": "2024-01-22T17:17:41.842Z",
+        "status": "PB"
+    }
+},
+{
+    "model": "blog.post",
+    "pk": 6,
+    "fields": {
+        "title": "Добавление постраничной разбивки",
+        "slug": "dobavlenie-postranichnoj-razbivki",
+        "body": "Когда вы начнете добавлять контент в свой блог, вы сможете легко хранить десятки и даже сотни постов в своей базе данных.\r\nВозможно, вы захотите разделить список постов на несколько страниц, не отображая все записи на одной странице, и вставить навигационные ссылки на разные страницы.\r\n\r\nЭта функциональность называется постраничной разбивкой, и ее можно найти почти в каждом веб-приложении, которое показывает длинные списки элементов.\r\n\r\nНапример, Яндекс использует постраничную разбивку с целью распределения результатов поиска по нескольким страницам.\r\nНа рисунке ниже показаны постранично разбитые ссылки Яндекса на страницы результатов поиска:",
+        "author": 1,
+        "publish": "2024-01-17T14:31:01Z",
+        "created": "2024-01-17T14:31:01Z",
+        "updated": "2024-01-22T17:17:59.635Z",
+        "status": "PB"
+    }
+},
+{
+    "model": "blog.post",
+    "pk": 7,
+    "fields": {
+        "title": "Использование канонических URL-адресов для моделей",
+        "slug": "ispolzovanie-kanonicheskih-adresov",
+        "body": "На веб-сайте могут быть разные страницы, отображающие один и тот же контент. В нашем приложении изначальная часть контента по каждому посту отображается как на странице списка постов, так и на странице детальной информации о посте.",
+        "author": 1,
+        "publish": "2024-01-16T14:31:01Z",
+        "created": "2024-01-16T14:31:01Z",
+        "updated": "2024-01-22T17:17:50.554Z",
+        "status": "PB"
+    }
+},
+{
+    "model": "blog.post",
+    "pk": 8,
+    "fields": {
+        "title": "Создание моделей данных блога",
+        "slug": "sozdanie-modelej-dannyh-bloga",
+        "body": "Напомним, что объект Python – это набор данных и методов.\r\n\r\nКласс – это концептуальная схема, которая объединяет данные и функциональности в единое целое. Создание нового класса влечет новый тип объекта, позволяя формировать экземпляры этого типа.\r\n\r\nМодель Django – это источник информации и поведения данных. Она состоит из класса Python, который является подклассом django.db.models.Model.\r\n\r\nКаждой модели ставится в соответствие одна таблица базы данных, где каждый атрибут класса соотносится с полем базы данных. Когда вы будете создавать модель, Django будет предоставлять практичный API, чтобы легко запрашивать объекты в базе данных.\r\n\r\nСначала мы определим модели баз данных для приложения blog.\r\n\r\nЗатем сгенерируем для этих моделей миграции базы данных, чтобы создать соответствующие таблицы базы данных.\r\n\r\nПри применении миграций Django будет создавать таблицу по каждой модели, определенной в файле models.py приложения.",
+        "author": 1,
+        "publish": "2024-01-09T11:47:14Z",
+        "created": "2024-01-18T11:47:35.019Z",
+        "updated": "2024-01-23T06:52:10.116Z",
+        "status": "PB"
+    }
+},
+{
+    "model": "blog.post",
+    "pk": 9,
+    "fields": {
+        "title": "GETTING THE GIST OF MARKDOWN’S FORMATTING SYNTAX",
+        "slug": "getting-the-gist-of-markdowns-formatting-syntax",
+        "body": "This is a post formatted with markdown\r\n\r\n--------------------------------------\r\n\r\n*This is emphasized* and **this is more emphasized**.\r\n\r\nHere is a list:\r\n\r\n* One\r\n\r\n* Two\r\n\r\n* Three\r\n\r\n\r\n\r\nAnd a [link to the Django website](https://www.djangoproject.com/)",
+        "author": 1,
+        "publish": "2024-01-24T06:36:21Z",
+        "created": "2024-01-24T06:45:24.233Z",
+        "updated": "2024-01-24T06:45:24.233Z",
+        "status": "PB"
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 1,
+    "fields": {
+        "post": 7,
+        "name": "Гость",
+        "email": "user@gmail.com",
+        "body": "Комментарий новый",
+        "created": "2022-01-21T15:25:01.096Z",
+        "updated": "2024-01-21T15:25:30.652Z",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 2,
+    "fields": {
+        "post": 4,
+        "name": "Гость",
+        "email": "user@gmail.com",
+        "body": "Комментарий первый",
+        "created": "2022-09-22T08:10:22.513Z",
+        "updated": "2024-01-22T08:10:22.513Z",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 3,
+    "fields": {
+        "post": 4,
+        "name": "user",
+        "email": "user1@gmail.com",
+        "body": "Comment two",
+        "created": "2023-03-22T00:11:36.624Z",
+        "updated": "2024-01-22T08:11:36.624Z",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 4,
+    "fields": {
+        "post": 4,
+        "name": "Tom",
+        "email": "tom@gmail.com",
+        "body": "Third comment about this post",
+        "created": "2024-01-22T08:13:07.213Z",
+        "updated": "2024-01-22T08:33:02.569Z",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 5,
+    "fields": {
+        "post": 4,
+        "name": "Mike",
+        "email": "mike@post.ru",
+        "body": "Уточнение к посту",
+        "created": "2024-01-22T08:14:36.572Z",
+        "updated": "2024-01-22T08:33:02.572Z",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 6,
+    "fields": {
+        "post": 4,
+        "name": "Рита",
+        "email": "rita@gmail.com",
+        "body": "Да сколько уже можно об одном и том же???",
+        "created": "2024-01-22T08:15:55.927Z",
+        "updated": "2024-01-22T08:15:55.927Z",
+        "active": true
+    }
+}
+]

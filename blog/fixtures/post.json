@@ -37,7 +37,7 @@
         "author": 1,
         "publish": "2024-01-14T14:31:01Z",
         "created": "2024-01-14T14:31:01Z",
-        "updated": "2024-01-18T11:50:55.981Z",
+        "updated": "2024-01-22T17:17:28.715Z",
         "status": "PB"
     }
 },
@@ -51,7 +51,7 @@
         "author": 1,
         "publish": "2024-01-10T07:42:31Z",
         "created": "2024-01-18T07:44:15.420Z",
-        "updated": "2024-01-18T07:44:15.420Z",
+        "updated": "2024-01-22T17:16:45.538Z",
         "status": "PB"
     }
 },
@@ -65,7 +65,7 @@
         "author": 1,
         "publish": "2024-01-15T13:45:21Z",
         "created": "2024-01-18T07:46:20.572Z",
-        "updated": "2024-01-18T07:46:20.572Z",
+        "updated": "2024-01-22T17:17:41.842Z",
         "status": "PB"
     }
 },
@@ -79,7 +79,7 @@
         "author": 1,
         "publish": "2024-01-17T14:31:01Z",
         "created": "2024-01-17T14:31:01Z",
-        "updated": "2024-01-18T11:52:00.826Z",
+        "updated": "2024-01-22T17:17:59.635Z",
         "status": "PB"
     }
 },
@@ -93,7 +93,7 @@
         "author": 1,
         "publish": "2024-01-16T14:31:01Z",
         "created": "2024-01-16T14:31:01Z",
-        "updated": "2024-01-18T11:52:56.141Z",
+        "updated": "2024-01-22T17:17:50.554Z",
         "status": "PB"
     }
 },
@@ -107,7 +107,21 @@
         "author": 1,
         "publish": "2024-01-09T11:47:14Z",
         "created": "2024-01-18T11:47:35.019Z",
-        "updated": "2024-01-18T11:47:43.738Z",
+        "updated": "2024-01-23T06:52:10.116Z",
+        "status": "PB"
+    }
+},
+{
+    "model": "blog.post",
+    "pk": 9,
+    "fields": {
+        "title": "GETTING THE GIST OF MARKDOWN’S FORMATTING SYNTAX",
+        "slug": "getting-the-gist-of-markdowns-formatting-syntax",
+        "body": "This is a post formatted with markdown\r\n\r\n--------------------------------------\r\n\r\n*This is emphasized* and **this is more emphasized**.\r\n\r\nHere is a list:\r\n\r\n* One\r\n\r\n* Two\r\n\r\n* Three\r\n\r\n\r\n\r\nAnd a [link to the Django website](https://www.djangoproject.com/)",
+        "author": 1,
+        "publish": "2024-01-24T06:36:21Z",
+        "created": "2024-01-24T06:45:24.233Z",
+        "updated": "2024-01-24T06:45:24.233Z",
         "status": "PB"
     }
 }
