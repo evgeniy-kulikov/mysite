@@ -5,7 +5,7 @@
 {% block title %}Пост: {{ post.title|truncatechars:25 }} {% endblock %}
 {% block content %}
     <h1>
-        <a href="{% url 'blog:post_list' %}">Мой блог</a>
+        Содержание статьи
     </h1>
     <p>{{ post.title }}</p>
     <p>{{ post.body|markdown_tag }}</p>

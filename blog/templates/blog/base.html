@@ -8,6 +8,12 @@
     <link href="{% static 'css/blog.css' %}" rel="stylesheet">
 </head>
 <body>
+<div>
+    <h3>
+        <a href="{% url 'blog:post_list' %}">Мой блог</a> |
+        <a href="{% url 'blog:post_search' %}">Поиск статей</a> |
+    </h3>
+</div>
 <div id="content">
     {% block content %}
     {% endblock %}

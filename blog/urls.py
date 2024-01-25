@@ -27,4 +27,6 @@ urlpatterns = [
 
     # Получение данных через id
     # path('<int:id>/', views.post_detail, name='post_detail'),
+
+    path('search/', views.post_search, name='post_search'),
 ]

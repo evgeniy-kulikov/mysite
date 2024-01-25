@@ -15,3 +15,8 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['name', 'email', 'body']
+
+
+# полнотекстовый поиск на ДБ postgres
+class SearchForm(forms.Form):
+    query = forms.CharField(label="Найти")
