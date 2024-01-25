@@ -32,5 +32,23 @@ urlpatterns = [
     # Добавление карты сайта  http://127.0.0.1:8000/sitemap.xml
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps},
     name="django.contrib.sitemaps.views.sitemap",),
+
+    #  встроенное auth приложение
+    path("accounts/", include("django.contrib.auth.urls")),  # new
 ]
+
+"""
+URL-адреса, предоставленные auth:
+
+accounts/login/ [name='login']
+accounts/logout/ [name='logout']
+accounts/password_change/ [name='password_change']
+accounts/password_change/done/ [name='password_change_done']
+accounts/password_reset/ [name='password_reset']
+accounts/password_reset/done/ [name='password_reset_done']
+accounts/reset/<uidb64>/<token>/ [name='password_reset_confirm']
+accounts/reset/done/ [name='password_reset_complete']
+"""
+
+# Проверка отображения языка Markdown
 # http://localhost:8000/2024/1/24/getting-the-gist-of-markdowns-formatting-syntax/

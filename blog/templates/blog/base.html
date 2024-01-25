@@ -25,6 +25,16 @@
         {% total_posts as cnt %} {{ cnt|ru_plural:"статья, статьи, статей" }}
     </p>
 
+    <hr>
+    {% if user.is_authenticated %}
+        Привет {{ user.username }}!
+        <p><a href="{% url 'logout' %}">Log Out</a></p>
+    {% else %}
+        <p>Войти в систему</p>
+        <a href="{% url 'login' %}">Log In</a>
+    {% endif %}
+    <hr>
+
     <h3>Последние статьи:</h3>
     {% show_latest_posts 3 %}
 

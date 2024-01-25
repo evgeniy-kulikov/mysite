@@ -190,4 +190,6 @@ EMAIL_USE_TLS  = os.getenv("EMAIL_USE_TLS")
 # SERVER_EMAIL = EMAIL_HOST_USER
 # EMAIL_ADMIN = EMAIL_HOST_USER
 
-
+# когда пользователь вошел/вышел  в систему, он будет отправлен на корневой адрес.
+LOGIN_REDIRECT_URL  =  "/"
+LOGOUT_REDIRECT_URL = "/"  # На Django 5.0 и выше  удалили выход из системы по запросу GET
