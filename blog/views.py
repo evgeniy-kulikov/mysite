@@ -15,7 +15,7 @@ from django.views.decorators.http import require_POST
 from taggit.models import Tag
 
 # полнотекстовый поиск на ДБ postgres
-from django.contrib.postgres.search import SearchVector
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from .forms import EmailPostForm, CommentForm, SearchForm
 
 # Переопределние класса Paginator
@@ -93,9 +93,43 @@ def post_search(request):
         form = SearchForm(request.GET)
         if form.is_valid():
             query = form.cleaned_data['query']
-            results = Post.published.annotate(
-                search=SearchVector('title', 'body'),
-            ).filter(search=query)
+
+            # # 3 -  Полнотекстовый поиск по двум полям  'title', 'body', а так же добавлено
+            # # выделение основ слов и ранжирование результатов, а так же добавлено
+            # # вес заголовка выше статьи (поиск по заголовкам даст приоритетный результат)
+            """
+            По умолчанию веса таковы: A, B, C, D и они относятся соответственно к числам 1.0, 0.4, 0.2, 0.1.
+            Вес 1.0 применяется к вектору поиска title(A), и вес 0.4 - к вектору body(B). 
+            Совпадения с заголовком будут преобладать над совпадениями с содержимым тела поста. 
+            Результаты фильтруются, чтобы отображать только те, у которых ранг выше 0.3.
+            """
+
+            search_vector = SearchVector('title', weight='A') + \
+                            SearchVector('body', weight='B')
+            search_query = SearchQuery(query)
+            results = Post.published.annotate(rank=SearchRank(search_vector, search_query)
+                                              ).filter(rank__gte=0.3).order_by('-rank')
+
+
+
+            # # 2 -  Полнотекстовый поиск по двум полям  'title', 'body', а тек же добавлено
+            # # выделение основ слов и ранжирование результатов
+            # search_vector = SearchVector('title', 'body')
+            # search_query = SearchQuery(query)
+            #
+            # # 2.1  Выделение основ слов и удаление стоп-слов на разных языках
+            # # search_vector = SearchVector('title', 'body', config='russian')
+            # # search_query = SearchQuery(query, config='russian')
+            #
+            # results = Post.published.annotate(
+            #     search=search_vector,
+            #     rank=SearchRank(search_vector, search_query)
+            # ).filter(search=search_query).order_by('-rank')
+
+            # #  1 - Полнотекстовый поиск по двум полям  'title', 'body'  (простой вариант)
+            # # results = Post.published.annotate(
+            # #     search=SearchVector('title', 'body'),
+            # # ).filter(search=query)
 
     return render(request,
                   'blog/post/search.html',
