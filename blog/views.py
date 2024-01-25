@@ -15,7 +15,8 @@ from django.views.decorators.http import require_POST
 from taggit.models import Tag
 
 # полнотекстовый поиск на ДБ postgres
-from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank, \
+    TrigramSimilarity, TrigramWordSimilarity
 from .forms import EmailPostForm, CommentForm, SearchForm
 
 # Переопределние класса Paginator
@@ -94,21 +95,45 @@ def post_search(request):
         if form.is_valid():
             query = form.cleaned_data['query']
 
-            # # 3 -  Полнотекстовый поиск по двум полям  'title', 'body', а так же добавлено
-            # # выделение основ слов и ранжирование результатов, а так же добавлено
-            # # вес заголовка выше статьи (поиск по заголовкам даст приоритетный результат)
-            """
-            По умолчанию веса таковы: A, B, C, D и они относятся соответственно к числам 1.0, 0.4, 0.2, 0.1.
-            Вес 1.0 применяется к вектору поиска title(A), и вес 0.4 - к вектору body(B). 
-            Совпадения с заголовком будут преобладать над совпадениями с содержимым тела поста. 
-            Результаты фильтруются, чтобы отображать только те, у которых ранг выше 0.3.
-            """
+            # # 5 ример, как можно реализовать через триграммное сходство по разным полям используя вес.
+            A = 1.0
+            B = 0.4
+            results = Post.published.annotate(
+                similarity=(A / (A + B) * TrigramSimilarity('title', query)
+                            + B / (A + B) * TrigramWordSimilarity(query, 'body'))
+            ).filter(similarity__gte=0.1).order_by('-similarity')
 
-            search_vector = SearchVector('title', weight='A') + \
-                            SearchVector('body', weight='B')
-            search_query = SearchQuery(query)
-            results = Post.published.annotate(rank=SearchRank(search_vector, search_query)
-                                              ).filter(rank__gte=0.3).order_by('-rank')
+
+            # # 4 -  Полнотекстовый поиск по триграммному сходству (по полю 'title')
+            # #  т.е. частичное содержание слова ли слово с небольшой ошибкой
+            # #  https://stepik.org/lesson/973400/step/4?unit=980252
+            # # https://docs.djangoproject.com/en/4.2/ref/contrib/postgres/search/#trigram-similarity
+            # # https://www.timescale.com/learn/postgresql-extensions-pg-trgm
+            # results = Post.published.annotate(
+            #     similarity=TrigramSimilarity('title', query),
+            # ).filter(similarity__gt=0.1).order_by('-similarity')
+            # # TrigramSimilarity  не умеет работать с несколькими полями, можно комбинировать только так:
+            # if not results:
+            #     results = Post.published.annotate(
+            #         search=SearchVector('body', 'title'),
+            #         rank=SearchRank(SearchVector('body', 'title'), SearchQuery(query))
+            #     ).filter(search=SearchQuery(query)).order_by('-rank')
+
+
+            # # # 3 -  Полнотекстовый поиск по двум полям  'title', 'body', а так же добавлено
+            # # # выделение основ слов и ранжирование результатов, а так же добавлено
+            # # # вес заголовка выше статьи (поиск по заголовкам даст приоритетный результат)
+            # """
+            # По умолчанию веса таковы: A, B, C, D и они относятся соответственно к числам 1.0, 0.4, 0.2, 0.1.
+            # Вес 1.0 применяется к вектору поиска title(A), и вес 0.4 - к вектору body(B).
+            # Совпадения с заголовком будут преобладать над совпадениями с содержимым тела поста.
+            # Результаты фильтруются, чтобы отображать только те, у которых ранг выше 0.3.
+            # """
+            # search_vector = SearchVector('title', weight='A') + \
+            #                 SearchVector('body', weight='B')
+            # search_query = SearchQuery(query)
+            # results = Post.published.annotate(rank=SearchRank(search_vector, search_query)
+            #                                   ).filter(rank__gte=0.3).order_by('-rank')
 
 
 
