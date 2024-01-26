@@ -21,9 +21,19 @@
     </h3>
 </div>
 <div id="content">
+
+{# Вывод сообщений #}
+{% if messages %}
+    {% for message in messages %}
+        {{ message.tags }} {{ message }}
+    {% endfor %}
+{% endif %}
+
     {% block content %}
     {% endblock %}
 </div>
+
+
 <div id="sidebar">
     <h2>Блог о Django</h2>
     <p>Полезная информация о фреймворке. Уже написано {% total_posts %}
