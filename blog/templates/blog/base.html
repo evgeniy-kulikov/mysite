@@ -15,7 +15,9 @@
 {#        <a href="http://127.0.0.1:8000/admin/">admin</a> |#}
         <a href="{% url 'admin:index' %}">admin</a> |
         <a href="{% url 'accounts:signup' %}">Регистрация</a> |
-        <a href="{% url 'password_reset' %}">Сбросить пароль</a> |
+        {% if user.is_authenticated %}
+        <a href="{% url 'password_reset' %}">Сбросить пароль</a>
+        {% endif %}
     </h3>
 </div>
 <div id="content">
