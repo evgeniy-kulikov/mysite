@@ -5,9 +5,10 @@
 /.idea
 /db.sqlite3
 /pyvenv.cfg
+/share/
 /.env
 /FAQ/important.txt
+/FAQ/POST.txt
 /blog/migrations/
-/FAQ/
-/share/
-/FAQ/Task.py
+/accounts/migrations/
+

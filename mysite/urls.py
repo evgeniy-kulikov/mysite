@@ -33,6 +33,8 @@ urlpatterns = [
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps},
     name="django.contrib.sitemaps.views.sitemap",),
 
+    #  собственное приложение
+    path("accounts/", include("accounts.urls")),
     #  встроенное auth приложение
     path("accounts/", include("django.contrib.auth.urls")),  # new
 ]

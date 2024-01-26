@@ -28,6 +28,7 @@
     <hr>
     {% if user.is_authenticated %}
         Привет {{ user.username }}!
+{#        # На Django 5.0 и выше  удалили выход из системы по запросу GET#}
         <p><a href="{% url 'logout' %}">Log Out</a></p>
     {% else %}
         <p>Войти в систему</p>

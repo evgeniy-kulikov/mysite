@@ -1,0 +1,118 @@
+* * *  ORM   * * *
+
+manage.py shell_plus --print-sql
+
+manage.py shell_plus --print-sql
+
+#  Через два знака подчеркивания мы можем указать имя поля вторичной модели - например, user__name или user__id.
+In [01]: User.objects.get(account__login="log")
+
+SELECT "onetoone_user"."id",
+       "onetoone_user"."name"
+  FROM "onetoone_user"
+ INNER JOIN "onetoone_account"
+    ON ("onetoone_user"."id" = "onetoone_account"."user_id")
+ WHERE "onetoone_account"."login" = 'log'
+ LIMIT 21
+
+Out[01]: <User: George>
+
+
+# Из вторичной модели получить значение соответствующего поля модели через внешний ключ
+In [02]: Product.objects.get(id=2).company.name
+
+SELECT "onetomany_product"."id",
+       "onetomany_product"."company_id",
+       "onetomany_product"."name",
+       "onetomany_product"."price"
+  FROM "onetomany_product"
+ WHERE "onetomany_product"."id" = 2
+ LIMIT 21
+
+SELECT "onetomany_company"."id",
+       "onetomany_company"."name"
+  FROM "onetomany_company"
+ WHERE "onetomany_company"."id" = 1
+ LIMIT 21
+
+Out[02]: 'Nike'
+
+
+
+# Из вторичной модели получить <QuerySet> значение соответствующего начения первичной модели через внешний ключ
+# Внимание на выражение company__name.
+# С помощью выражения модель__свойство (два подчеркивания!)
+# можно использовать свойство главной модели для фильтрации объектов (записей в таблице БД) зависимой модели.
+In [3]: Product.objects.filter(company__name="Nestle")
+
+Out[3]: SELECT "onetomany_product"."id",
+       "onetomany_product"."company_id",
+ LIMIT 21
+
+<QuerySet [<Product: Coffee>, <Product: Chocolate>, <Product: Candies>, <Product: Cookie>]>
+
+
+# Из вторичной модели получить <QuerySet> значение соответствующего диапазона первичной модели через внешний ключ
+# company__id меньше чем 4
+In [4]: Product.objects.filter(company__id__lt=4)
+Out[4]: SELECT "onetomany_product"."id",
+       "onetomany_product"."company_id",
+       "onetomany_product"."name",
+       "onetomany_product"."price"
+  FROM "onetomany_product"
+ WHERE "onetomany_product"."company_id" < 4
+ LIMIT 21
+
+<QuerySet [<Product: Кроссовки>, <Product: Ботинки>, <Product: Валенки>]>
+
+
+#  "главная_модель"."зависимая_модель"_set
+# На основании записи из главной модели можно получать связанные записи из зависимой (подчинённой) модели.
+In [8]: comp = Company.objects.get(name="Nestle")
+
+SELECT "onetomany_company"."id",
+       "onetomany_company"."name"
+  FROM "onetomany_company"
+ WHERE "onetomany_company"."name" = 'Nestle'
+ LIMIT 21
+
+In [9]: comp
+Out[9]: <Company: Nestle>
+
+
+In [10]: goods = comp.product_set.all()
+In [11]: goods
+
+Out[11]: SELECT "onetomany_product"."id",
+       "onetomany_product"."company_id",
+       "onetomany_product"."name",
+       "onetomany_product"."price"
+  FROM "onetomany_product"
+ WHERE "onetomany_product"."company_id" = 4
+
+<QuerySet [<Product: Coffee>, <Product: Chocolate>, <Product: Candies>, <Product: Cookie>]>
+
+#  с помощью выражения _set
+# можно выполнять операции добавления, изменения, удаления объектов зависимой модели из главной модели.
+
+
+
+
+
+*   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *
+*   *   *   *   *   *   *   *   *   *   *    postgres   *   *   *   *   *   *   *   *   *   *   *   *   *   *
+*   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *
+
+python manage.py shell
+
+# поиск по одному полю, используя операцию search набора запросов QuerySet
+from blog.models import Post
+Post.objects.filter(title__search='django')
+
+https://docs.djangoproject.com/en/4.2/ref/contrib/postgres/search/#full-text-search
+
+# поиск по нескольким полям. В этом случае необходимо определить объект SearchVector
+from django.contrib.postgres.search import SearchVector
+from blog.models import Post
+Post.objects.annotate(search=SearchVector('title', 'body'),).filter(search='django')
+

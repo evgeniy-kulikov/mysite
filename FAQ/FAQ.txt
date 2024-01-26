@@ -1,0 +1,96 @@
+# Самое первое дело!!!
+pip install python-dotenv
+https://pypi.org/project/python-dotenv/
+
+запись зависимостей
+pip freeze > requirements.txt
+
+установка зависимостей
+pip install -r requirements.txt
+
+
+
+manage.py startapp posts
+manage.py makemigrations
+manage.py makemigrations posts
+python manage.py migrate
+manage.py createsuperuser
+http://127.0.0.1:8000/admin/
+
+# Сброс пароля администратора
+python manage.py changepassword admin
+
+# posts/admin.py
+admin.site.register(Post)
+
+******************************************
+ORM
+python manage.py shell
+from posts.models import Post
+Post.objects.all()  # <QuerySet [<Post: Затем нажмите кнопку SAVE, которая сохранит и пере>]>
+
+second_post = Post.objects.create(text='Мой второй текст в БД')
+second_post.text   # 'Мой второй текст в БД'
+second_post.id  # 2
+
+third_post = Post(text='Моя третья запись в БД')
+third_post.save()
+
+get_or_create()
+
+
+from onetoone.models import User, Account
+from onetomany.models import Company, Product
+
+******
+Для более удобной работы с консолью ORM дополнительно установить пакеты:
+pip install ipython
+pip install django-extensions
+
+далее в settings.py зарегистрировать приложение django-extensions
+INSTALLED_APPS = [
+    ...
+    'django_extensions',
+    ...
+	]
+
+После этого набираем в терминале:
+python manage.py shell_plus --print-sql
+
+python manage.py shell_plus --print-sql
+./manage.py shell_plus --print-sql
+manage.py shell_plus --print-sql
+
+
+
+
+# выгрузка данных из базы (файлы с одинаковыми именами ПЕРЕЗАПИШУТЬСЯ !!!)
+# Папка должна быть создана
+python -Xutf8 manage.py dumpdata --format=json --indent=4 auth.User > blog/fixtures/user_auth.json
+python -Xutf8 manage.py dumpdata --format=json --indent=4 blog.Post > blog/fixtures/post.json
+
+python -Xutf8 manage.py dumpdata --format=json --indent=4 contenttypes.contenttype > blog/fixtures/content_type_PG.json
+python -Xutf8 manage.py dumpdata --format=json --indent=4 taggit.Taggeditem > blog/fixtures/taggeditem_PG.json
+python -Xutf8 manage.py dumpdata --format=json --indent=4 taggit.Tag > blog/fixtures/tag_PG.json
+python -Xutf8 manage.py dumpdata --format=json --indent=4 sites.site > blog/fixtures/site.json
+
+
+
+python manage.py dumpdata --indent=2 --output=mysite_data.json
+python -Xutf8 manage.py dumpdata --format=json --indent=4  > blog/fixtures/all_db.json
+
+# загрузить данные из файла *.json в  базу данных (существующие данные в базе при этом перезапишутся)
+python manage.py loaddata blog/fixtures/user_auth.json
+python manage.py loaddata blog/fixtures/post.json
+
+python manage.py loaddata blog/fixtures/site.json
+python manage.py loaddata blog/fixtures/tag.json
+
+python manage.py loaddata blog/fixtures/content_type.json  # при загрузке возникли ошибки
+
+
+python manage.py loaddata blog/fixtures/all_db.json  # при загрузке возникли ошибки
+
+
+pip freeze > requirements.txt
+
