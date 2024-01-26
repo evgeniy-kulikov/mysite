@@ -7,9 +7,11 @@ from django.http import HttpResponseRedirect
 
 from django.contrib.auth import logout
 
+from .forms import SignUpForm
 
 class SignUpView(generic.CreateView):
-    form_class = UserCreationForm  # встроенный класс из auth.forms
+    # form_class = UserCreationForm  # встроенный класс из auth.forms
+    form_class = SignUpForm  # переопределили UserCreationForm из встроенного класса auth.forms
     success_url = reverse_lazy("login")  # Перенаправление на login-страницу при успешной регистрации
     template_name = "accounts/signup.html"
 

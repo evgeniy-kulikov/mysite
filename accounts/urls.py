@@ -9,7 +9,7 @@ urlpatterns = [
 ]
 
 # http://127.0.0.1:8000/accounts/logout/
-# http://127.0.0.1:8000/accounts/signup/
+# http://127.0.0.1:8000/accounts/signup/   # регистрация нового пользователя
 
 # название папки и файла - для встроенного auth приложение
 # http://127.0.0.1:8000/registration/login/

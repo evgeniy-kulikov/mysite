@@ -12,6 +12,10 @@
     <h3>
         <a href="{% url 'blog:post_list' %}">Мой блог</a> |
         <a href="{% url 'blog:post_search' %}">Поиск статей</a> |
+{#        <a href="http://127.0.0.1:8000/admin/">admin</a> |#}
+        <a href="{% url 'admin:index' %}">admin</a> |
+        <a href="{% url 'accounts:signup' %}">Регистрация</a> |
+        <a href="{% url 'password_reset' %}">Сбросить пароль</a> |
     </h3>
 </div>
 <div id="content">
