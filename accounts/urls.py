@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import SignUpView, logout_view, CustomLoginView, profile
+from .views import SignUpView, logout_view, CustomLoginView, profile, ChangePasswordView
 from django.contrib.auth import views as auth_views
+
 
 app_name = 'accounts'
 
@@ -20,13 +21,10 @@ urlpatterns = [
     # path("logout/", logout_view, name="logout"),
 
     path('profile/', profile, name='users-profile'),
+    path('password_change/', ChangePasswordView.as_view(), name='password_change'),
 ]
 
-if settings.DEBUG:
-    # # Django Debug Toolbar
-    # urlpatterns.append(path('__debug__/', include('debug_toolbar.urls')))
-    # для возможности отображения медиафайлов в режиме DEBUG
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 # http://127.0.0.1:8000/accounts/logout/
 # http://127.0.0.1:8000/accounts/signup/   # регистрация нового пользователя
@@ -35,3 +33,4 @@ if settings.DEBUG:
 # http://127.0.0.1:8000/registration/login/
 # http://127.0.0.1:8000/accounts/password_reset/
 # http://127.0.0.1:8000/accounts/password_reset/done/
+

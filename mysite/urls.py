@@ -23,6 +23,10 @@ from django.contrib.sitemaps.views import sitemap
 from blog.sitemaps import PostSitemap
 sitemaps = {'posts': PostSitemap,}
 
+# для возможности отображения медиафайлов
+from django.conf.urls.static import static
+from django.conf import settings
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,6 +42,12 @@ urlpatterns = [
     #  встроенное auth приложение
     path("accounts/", include("django.contrib.auth.urls")),  # new
 ]
+
+if settings.DEBUG:
+    # # Django Debug Toolbar
+    # urlpatterns.append(path('__debug__/', include('debug_toolbar.urls')))
+    # для возможности отображения медиафайлов в режиме DEBUG
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 """
 URL-адреса, предоставленные auth:

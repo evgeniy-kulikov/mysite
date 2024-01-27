@@ -12,12 +12,14 @@
     <h3>
         <a href="{% url 'blog:post_list' %}">Мой блог</a> |
         <a href="{% url 'blog:post_search' %}">Поиск статей</a> |
+
 {#        <a href="http://127.0.0.1:8000/admin/">admin</a> |#}
         <a href="{% url 'admin:index' %}">admin</a> |
 
+        <a href="{% url 'accounts:users-profile' %}">Профиль</a> |
         <a href="{% url 'accounts:signup' %}">Регистрация</a> |
         {% if user.is_authenticated %}
-        <a href="{% url 'password_reset' %}">Сбросить пароль</a>|
+        <a href="{% url 'password_change' %}">Изменить пароль</a>|
         {% endif %}
 
         {% if not user.is_authenticated %}
@@ -53,10 +55,12 @@
     {% if user.is_authenticated %}
         Привет {{ user.username }}!
 {#        # На Django 5.0 и выше  удалили выход из системы по запросу GET#}
+        <p><a href="{% url 'accounts:users-profile' %}">Профиль</a></p>
         <p><a href="{% url 'logout' %}">Выйти</a></p>
     {% else %}
-        <p>Войти в систему</p>
+        <p>вы не авторизованы</p>
         <a href="{% url 'login' %}">Войти</a>
+        <p><a href="{% url 'password_reset' %}">Сбросить пароль</a></p>
     {% endif %}
     <hr>
 
