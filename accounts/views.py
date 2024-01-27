@@ -72,9 +72,11 @@ class CustomLoginView(LoginView):
         return super(CustomLoginView, self).form_valid(form)
 
 
+# Для Django 5.0 и выше
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(redirect_to=reverse('blog:post_list'))
+    # return HttpResponseRedirect(redirect_to=reverse('blog:post_list'))
+    return HttpResponseRedirect("/")
 
     # На Django 5.0 и выше  удалили выход из системы по запросу GET
     # return HttpResponseRedirect(redirect_to=reverse('logout'))

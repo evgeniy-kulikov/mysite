@@ -194,6 +194,7 @@ EMAIL_USE_TLS  = os.getenv("EMAIL_USE_TLS")
 # когда пользователь вошел/вышел  в систему, он будет отправлен на корневой адрес.
 LOGIN_REDIRECT_URL  =  "/"
 
+# После указания в urls template_name='registration/logout.html'  эта настройка больше не нужна
 # LOGOUT_REDIRECT_URL = "/"  # На Django 5.0 и выше  удалили выход из системы по запросу GET
 
 # время истечения сеанса равно 30 дней

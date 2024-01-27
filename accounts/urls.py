@@ -14,9 +14,10 @@ urlpatterns = [
                                            template_name='registration/login.html'), name='login'),
 
     # На Django 5.0 и выше  удалили выход из системы по запросу GET
-    # path('logout/', auth_views.LogoutView.as_view(template_name='registration/logout.html'), name='logout'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='registration/logout.html'), name='logout'),
 
-    path("logout/", logout_view, name="logout"),
+    # Для Django 5.0 и выше
+    # path("logout/", logout_view, name="logout"),
 
 ]
 
