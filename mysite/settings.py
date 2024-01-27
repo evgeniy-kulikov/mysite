@@ -199,3 +199,10 @@ LOGIN_REDIRECT_URL  =  "/"
 
 # время истечения сеанса равно 30 дней
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
+
+
+# Для режима DEBUG = True
+# указываем путь к хранению медиафайлов
+MEDIA_ROOT = BASE_DIR/'media'
+# указываем префикс пути для медиафайлов
+MEDIA_URL = '/media/'

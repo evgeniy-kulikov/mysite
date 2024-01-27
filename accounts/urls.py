@@ -20,8 +20,13 @@ urlpatterns = [
     # path("logout/", logout_view, name="logout"),
 
     path('profile/', profile, name='users-profile'),
-
 ]
+
+if settings.DEBUG:
+    # # Django Debug Toolbar
+    # urlpatterns.append(path('__debug__/', include('debug_toolbar.urls')))
+    # для возможности отображения медиафайлов в режиме DEBUG
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # http://127.0.0.1:8000/accounts/logout/
 # http://127.0.0.1:8000/accounts/signup/   # регистрация нового пользователя
