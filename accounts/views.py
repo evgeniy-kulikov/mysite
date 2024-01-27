@@ -7,7 +7,15 @@ from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.http import HttpResponseRedirect
 
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
 from .forms import SignUpForm, LoginForm
+
+
+@login_required
+def profile(request):
+    return render(request, 'registration/profile.html')
 
 
 class SignUpView(generic.CreateView):

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import SignUpView, logout_view, CustomLoginView
+from .views import SignUpView, logout_view, CustomLoginView, profile
 from django.contrib.auth import views as auth_views
 
 app_name = 'accounts'
@@ -18,6 +18,8 @@ urlpatterns = [
 
     # Для Django 5.0 и выше
     # path("logout/", logout_view, name="logout"),
+
+    path('profile/', profile, name='users-profile'),
 
 ]
 
