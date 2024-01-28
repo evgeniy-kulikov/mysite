@@ -106,7 +106,76 @@ class Album(models.Model):
 class Song(models.Model):
     title = models.CharField(max_length=100)
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
-    
 """
 
+
+# 7.4 Профили пользователей и пользовательские поля модели User
+"""
+# Task 01
+from django.db import models
+
+class Employee(models.Model):
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=20)
+    age = models.PositiveIntegerField(default=18)
+    job_title = models.CharField(max_length=20)
+    speciality = models.CharField(max_length=100)
+    from_date = models.DateField()
+    
+class Contact(models.Model):
+    phone = models.CharField(max_length=20)
+    email = models.EmailField()
+    address = models.CharField(max_length=255)
+    employee = models.OneToOneField(Employee, on_delete=models.CASCADE)
+
+
+# Task 02
+from django.db import models
+
+class Department(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    
+class Employee(models.Model):
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=20)
+    age = models.PositiveIntegerField(default=18)
+    job_title = models.CharField(max_length=20)
+    speciality = models.CharField(max_length=100)
+    from_date = models.DateField()
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+        
+class Contact(models.Model):
+    phone = models.CharField(max_length=20)
+    email = models.EmailField()
+    address = models.CharField(max_length=255)
+    employee = models.OneToOneField(Employee, on_delete=models.CASCADE)
+    
+
+# Task 03
+from django.db import models   
+
+class Compensation(models.Model):
+    name = models.CharField(max_length=255) 
+    
+class Department(models.Model):
+    name = models.CharField(max_length=255) 
+    description = models.TextField()
+
+class Employee(models.Model):
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=20)
+    age = models.PositiveIntegerField(default=18)
+    job_title = models.CharField(max_length=20)
+    speciality = models.CharField(max_length=100)
+    from_date = models.DateField()
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    compensations = models.ManyToManyField(Compensation)
+    
+class Contact(models.Model):
+    phone = models.CharField(max_length=20)
+    email = models.EmailField()
+    address = models.CharField(max_length=255)
+    employee = models.OneToOneField(Employee, on_delete=models.CASCADE)
+"""
 

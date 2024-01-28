@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.urls import re_path
 
 # Добавление карты сайта
 # https://docs.djangoproject.com/en/4.2/ref/contrib/sitemaps/
@@ -40,7 +41,9 @@ urlpatterns = [
     #  собственное приложение
     path("accounts/", include("accounts.urls")),
     #  встроенное auth приложение
-    path("accounts/", include("django.contrib.auth.urls")),  # new
+    path("accounts/", include("django.contrib.auth.urls")),
+
+    re_path(r'^oauth/', include('social_django.urls', namespace='social')),  # OAuth 2.0
 ]
 
 if settings.DEBUG:

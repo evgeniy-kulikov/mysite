@@ -67,6 +67,7 @@ INSTALLED_APPS = [
 
     'taggit',
     'django_extensions',
+    'social_django',
 
     'blog.apps.BlogConfig',
     'accounts.apps.AccountsConfig',
@@ -95,6 +96,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                # OAuth 2.0
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -206,3 +211,17 @@ SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 MEDIA_ROOT = BASE_DIR/'media'
 # указываем префикс пути для медиафайлов
 MEDIA_URL = '/media/'
+
+
+# аутентификации Google и Github посредством OAuth 2.0
+# https://python-social-auth.readthedocs.io/en/latest/configuration/django.html
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# social auth configs for github
+SOCIAL_AUTH_GITHUB_KEY = os.getenv("SOCIAL_AUTH_GITHUB_KEY")
+SOCIAL_AUTH_GITHUB_SECRET = os.getenv("SOCIAL_AUTH_GITHUB_SECRET")

@@ -1,7 +1,8 @@
 {% extends "blog/base.html" %}
 {% block title %} Вход в систему {% endblock %}
 {% block content %}
-    <h2> Login </h2>
+    <h2> Вход </h2>
+    <a href="{% url 'social:begin' 'github' %}">Вход через GitHub</a>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
