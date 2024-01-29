@@ -1,0 +1,13 @@
+{% extends "blog/base.html" %}
+{% block title %} Вход в систему {% endblock %}
+{% block content %}
+    <h2> Вход </h2>
+    <a href="{% url 'social:begin' 'github' %}">Вход через GitHub</a>
+    <br><a href="{% url 'social:begin' 'google-oauth2' %}">Вход через Google</a>
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Login"></p>
+    </form>
+    <a href="{% url 'password_reset' %}">Сбросить пароль</a>
+{% endblock %}

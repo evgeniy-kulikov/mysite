@@ -2,12 +2,15 @@
 {% block title %} Вход в систему {% endblock %}
 {% block content %}
     <h2> Вход </h2>
-    <a href="{% url 'social:begin' 'github' %}">Вход через GitHub</a>
-    <br><a href="{% url 'social:begin' 'google-oauth2' %}">Вход через Google</a>
-    <form method="post">
-        {{ form.as_p }}
+    <a href="{% url 'accounts:signup' %}"  class="btn btn-link btn-lg active btn-block text-decoration-none">Зарегистрироваться</a>
+    <a href="{% url 'social:begin' 'github' %}"  class="btn btn-link btn-lg active btn-block text-decoration-none">Вход через GitHub</a>
+    <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-link btn-lg active btn-block text-decoration-none">Вход через Google</a>
+    <form method="post" class="form">
+        {{ form.username }}
+        {{ form.password }}
+        <div class="mb-1 fs-5">Запомнить меня: {{ form.remember_me }}</div>
         {% csrf_token %}
-        <p><input type="submit" value="Login"></p>
+        <input type="submit" class="btn btn-primary btn-lg" value="Login">
     </form>
-    <a href="{% url 'password_reset' %}">Сбросить пароль</a>
+   <a class="text-decoration-none fs-5" href="{% url 'password_reset' %}">Сбросить пароль</a>
 {% endblock %}
