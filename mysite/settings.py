@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'taggit',
     'django_extensions',
     'social_django',
+    'django_summernote',  # редактор Summernote
 
     'blog.apps.BlogConfig',
     'accounts.apps.AccountsConfig',
@@ -205,6 +206,25 @@ LOGIN_REDIRECT_URL  =  "/"
 # время истечения сеанса равно 30 дней
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 
+# аутентификации Google и Github посредством OAuth 2.0
+# https://python-social-auth.readthedocs.io/en/latest/configuration/django.html
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    # 'social_core.backends.google.GoogleOAuth',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# social auth configs for GitHub
+SOCIAL_AUTH_GITHUB_KEY = str(os.getenv("GITHUB_KEY"))
+SOCIAL_AUTH_GITHUB_SECRET = str(os.getenv("GITHUB_SECRET"))
+
+# social auth configs for Google
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = str(os.getenv("GOOGLE_KEY"))
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = str(os.getenv("GOOGLE_SECRET"))
+
+
 
 # Для режима DEBUG = True
 # указываем путь к хранению медиафайлов
@@ -212,21 +232,4 @@ MEDIA_ROOT = BASE_DIR/'media'
 # указываем префикс пути для медиафайлов
 MEDIA_URL = '/media/'
 
-
-# аутентификации Google и Github посредством OAuth 2.0
-# https://python-social-auth.readthedocs.io/en/latest/configuration/django.html
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.github.GithubOAuth2',
-    'social_core.backends.google.GoogleOAuth2',
-
-    'django.contrib.auth.backends.ModelBackend',
-)
-
-# social auth configs for GitHub
-SOCIAL_AUTH_GITHUB_KEY = os.getenv("SOCIAL_AUTH_GITHUB_KEY")
-SOCIAL_AUTH_GITHUB_SECRET = os.getenv("SOCIAL_AUTH_GITHUB_SECRET")
-
-# social auth configs for Google
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
 

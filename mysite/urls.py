@@ -25,8 +25,9 @@ from blog.sitemaps import PostSitemap
 sitemaps = {'posts': PostSitemap,}
 
 # для возможности отображения медиафайлов
-from django.conf.urls.static import static
 from django.conf import settings
+from django.conf.urls.static import static
+
 
 
 urlpatterns = [
@@ -44,6 +45,8 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
 
     re_path(r'^oauth/', include('social_django.urls', namespace='social')),  # OAuth 2.0
+    path('summernote/', include('django_summernote.urls')), # добавление редактора summernote
+
 ]
 
 if settings.DEBUG:
