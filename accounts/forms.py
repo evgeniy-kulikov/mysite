@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from accounts.models import Profile
 
+from django_summernote.widgets import SummernoteWidget  # Редактор Summernote
+
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=100, label='Имя')
@@ -45,7 +47,12 @@ class UpdateUserForm(forms.ModelForm):
 
 class UpdateProfileForm(forms.ModelForm):
     avatar = forms.ImageField(widget=forms.FileInput())
-    bio = forms.CharField(widget=forms.Textarea(attrs={'rows': 5}))
+
+    # bio = forms.CharField(widget=forms.Textarea(attrs={'rows': 5}))  # простое поле
+    bio = forms.CharField(widget=SummernoteWidget())  # виджет редактора Summernote
+    # переопределить настройки из SUMMERNOTE_CONFIG
+    # bio = forms.CharField(widget=SummernoteWidget(attrs={'summernote': {'width': '50%', 'height': '400px'}}))  # виджет редактора Summernote
+
 
     class Meta:
         model = Profile
