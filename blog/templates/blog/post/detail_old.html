@@ -1,0 +1,60 @@
+{% extends "blog/base.html" %}
+{% load blog_extras %}
+{% load blog_tags %}
+
+{% block title %}Пост: {{ post.title|truncatechars:25 }} {% endblock %}
+{% block content %}
+    <h1>
+        Содержание статьи
+    </h1>
+    <p>{{ post.title }}</p>
+    <p>{{ post.body|markdown_tag }}</p>
+    <p>
+        <a href="{% url 'blog:post_share' post.id %}">
+            Поделиться ссылкой на пост
+        </a>
+    </p>
+
+{#    Список схожих постов #}
+    <h2>Похожие посты:</h2>
+    {% for post in similar_posts %}
+        <p>
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </p>
+    {% empty %}
+        There are no similar posts yet.
+    {% endfor %}
+
+
+    {% with comments.count as total_comments %}
+        <h2>
+{#            {{ total_comments }} comment{{ total_comments|pluralize }}#}
+            {{ total_comments }} {{ total_comments|ru_plural:"комментарий, комментария, комментариев" }}
+        </h2>
+    {% endwith %}
+
+    {% for comment in comments %}
+        <div class="comment">
+            <p class="info">
+                Комментарий {{ forloop.counter }} от {{ comment.name }}
+                &nbsp;&nbsp; {{ comment.created }}
+                &nbsp;&nbsp;(написано {{ comment.created|timesince }} &nbsp; назад)
+{# Вариант вывода давности поста через собственный метод модели when_published#}
+                - (written {{ comment.when_published }})
+            </p>
+{#            {{ comment.body|linebreaks }}#}
+            {{ comment.body|safe  }}
+
+        </div>
+    {% empty %}
+        <p>Комментариев еще нет.</p>
+    {% endfor %}
+    <br>
+    <form method="get">
+        <button name="desc">По убыванию</button>
+        <button name="asc">По возрастанию</button>
+    </form>
+
+    {% include "blog/post/includes/comment_form.html" %}
+
+{% endblock %}

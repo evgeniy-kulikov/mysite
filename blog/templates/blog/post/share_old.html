@@ -9,14 +9,12 @@
             "{{ post.title }}" был успешно отправлен для {{ form.cleaned_data.to }}.
         </p>
     {% else %}
-        <h1>Отправить ссылку на "{{ post.title }}" через почту.</h1>
+        <h1>Отправить "{{ post.title }}" по адресу</h1>
         <form method="post">
-            {{ form.name }}
-            {{ form.email }}
-            {{ form.to }}
-            {{ form.comments }}
+            {{ form.as_p }}
             {% csrf_token %}
-            <input type="submit" value="Отправить сообщение" class="btn btn-primary mb-3 btn-lg">
+            <input type="submit" value="Отправить сообщение">
         </form>
+                <p><a href="{{ post.get_absolute_url }}">&#10094;&#10094;&#10094;&nbsp;  Обратно к посту</a></p>
     {% endif %}
 {% endblock %}

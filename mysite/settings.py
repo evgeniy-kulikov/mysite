@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'social_django',
     'django_summernote',  # редактор Summernote
+    'django_bootstrap5',  # Bootstrap 5
 
     'blog.apps.BlogConfig',
     'accounts.apps.AccountsConfig',
@@ -226,24 +227,21 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = str(os.getenv("GOOGLE_SECRET"))
 
 
 # Редактор Summernote
-# SUMMERNOTE_THEME = 'bs5'  # Включить в summernote поддержку Bootstrap5
+SUMMERNOTE_THEME = 'bs5'  # Включить в summernote поддержку Bootstrap5
 
 SUMMERNOTE_CONFIG = {
 # Пользовательские настройки Summernote
     'summernote': {
-        'width': '100%',
-        'height': '480',
+        # 'width': '100%',
+        # 'height': '480',
 
 # Кастомизация
     # https://summernote.org/deep-dive/#custom-toolbar-popover
     'toolbar': [
-        ['style', ['style']],
         ['font', ['bold', 'underline', 'clear']],
-        ['fontname', ['fontname']],
         ['fontsize', ['fontsize']],
         ['color', ['color']],
         ['para', ['ul', 'ol', 'paragraph']],
-        ['table', ['table']],
         ['insert', ['link', 'picture', 'video']],
         ['view', ['fullscreen', 'codeview', 'help']],
     ],
