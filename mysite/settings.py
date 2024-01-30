@@ -70,9 +70,11 @@ INSTALLED_APPS = [
     'social_django',
     'django_summernote',  # редактор Summernote
     'django_bootstrap5',  # Bootstrap 5
+    'rest_framework',
 
     'blog.apps.BlogConfig',
     'accounts.apps.AccountsConfig',
+    'blog_api.apps.BlogApiConfig',
 ]
 
 MIDDLEWARE = [
@@ -224,6 +226,13 @@ SOCIAL_AUTH_GITHUB_SECRET = str(os.getenv("GITHUB_SECRET"))
 # social auth configs for Google
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = str(os.getenv("GOOGLE_KEY"))
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = str(os.getenv("GOOGLE_SECRET"))
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
+    ],
+}
 
 
 # Редактор Summernote

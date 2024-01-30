@@ -47,6 +47,8 @@ urlpatterns = [
     re_path(r'^oauth/', include('social_django.urls', namespace='social')),  # OAuth 2.0
     path('summernote/', include('django_summernote.urls')), # добавление редактора summernote
 
+    path("api/", include("blog_api.urls")),  # Django REST Framework
+
 ]
 
 if settings.DEBUG:
