@@ -8,7 +8,9 @@ class PostSerializer(serializers.ModelSerializer):
             "id",
             "author",
             "title",
+            "slug",
             "body",
             "created",
+            "status",
         )
         model = Post
