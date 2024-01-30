@@ -69,8 +69,9 @@ INSTALLED_APPS = [
     'django_extensions',
     'social_django',
     'django_summernote',  # редактор Summernote
-    'django_bootstrap5',  # Bootstrap 5
+    'django_bootstrap5',
     'rest_framework',
+    'django_filters',
 
     'blog.apps.BlogConfig',
     'accounts.apps.AccountsConfig',
@@ -232,6 +233,7 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
     ],
+    "DEFAULT_FILTER_BACKENDS": ['django_filters.rest_framework.DjangoFilterBackend']  # pip django_filters
 }
 
 
