@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'rest_framework',
     'django_filters',
+    'rest_framework.authtoken',
 
     'blog.apps.BlogConfig',
     'accounts.apps.AccountsConfig',
@@ -235,8 +236,14 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticated",  # API доступен только зарегистрированным пользователям
     ],
     "DEFAULT_FILTER_BACKENDS": ['django_filters.rest_framework.DjangoFilterBackend'],  # pip django_filters
+
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',  # пагинация
     'PAGE_SIZE': 3,  # пагинация
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        "rest_framework.authentication.TokenAuthentication",
+    ),
 }
 
 
