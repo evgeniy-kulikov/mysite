@@ -5,6 +5,7 @@ from .serializers import PostSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from rest_framework.pagination import PageNumberPagination
+from rest_framework import generics, permissions
 
 
 # Чтобы изменить определенные аспекты стиля пагинации, переопределяем один из классов пагинации
@@ -71,3 +72,4 @@ class UserPostList(generics.ListAPIView):
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    permission_classes = (permissions.IsAdminUser,)  # Разрешения на уровне представлений

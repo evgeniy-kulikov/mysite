@@ -48,6 +48,7 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')), # добавление редактора summernote
 
     path("api/", include("blog_api.urls")),  # Django REST Framework
+    path("api-auth/", include("rest_framework.urls")),  # возможность авторизации из API сервиса
 
 ]
 
